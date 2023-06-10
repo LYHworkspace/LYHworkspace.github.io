@@ -2,8 +2,8 @@
   --body-bg-color: #fff;
   --content-bg-color: #f5f5f5;
   --card-bg-color: #f5f5f5;
-  --text-color: #555;
-  --blockquote-color: #666;
+  --text-color: #000;
+  --blockquote-color: #000;
   --link-color: #555;
   --link-hover-color: #222;
   --brand-color: #222;
@@ -184,8 +184,8 @@ body {
   background: var(--body-bg-color);
   box-sizing: border-box;
   color: var(--text-color);
-  font-family: Noto Serif SC, "Noto Serif SC", sans-serif;
-  font-size: 16px;
+  font-family: Noto Serif SC, "Noto Serif SC", 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-size: 17px;
   line-height: 2;
   min-height: 100%;
   position: relative;
@@ -197,7 +197,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: Noto Serif SC, "Noto Serif SC", sans-serif;
+  font-family: Noto Serif SC, "Noto Serif SC", 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-weight: bold;
   line-height: 1.5;
   margin: 30px 0 15px;
@@ -251,14 +251,17 @@ hr {
   margin: 40px 0;
 }
 blockquote {
-  border-left: 4px solid #ddd;
+  font-family: STKaiTi;
+  background: #fff;
+  border-left: 6px solid #ddd;
   color: var(--blockquote-color);
-  margin: 0;
+  margin: 0.25em 0;
   padding: 0 15px;
+  border-radius: 8px;
 }
 blockquote cite::before {
   content: '-';
-  padding: 0 5px;
+  padding: 0 8px;
 }
 dt {
   font-weight: bold;
@@ -343,15 +346,13 @@ td {
   margin-top: 4px;
 }
 .toggle.toggle-arrow :first-child {
-  left: 50%;
   top: 2px;
-  transform: rotate(45deg);
+  transform: rotate(-45deg);
   width: 50%;
 }
 .toggle.toggle-arrow :last-child {
-  left: 50%;
   top: -2px;
-  transform: rotate(-45deg);
+  transform: rotate(45deg);
   width: 50%;
 }
 .toggle.toggle-close :nth-child(2) {
@@ -359,11 +360,11 @@ td {
 }
 .toggle.toggle-close :first-child {
   top: 6px;
-  transform: rotate(45deg);
+  transform: rotate(-45deg);
 }
 .toggle.toggle-close :last-child {
   top: -6px;
-  transform: rotate(-45deg);
+  transform: rotate(45deg);
 }
 /*!
   Theme: Default
@@ -409,7 +410,7 @@ pre figcaption a:hover {
 }
 pre,
 code {
-  font-family: consolas, Menlo, monospace, "Noto Serif SC";
+  font-family: consolas, Menlo, monospace, "Noto Serif SC", 'PingFang SC', 'Microsoft YaHei';
 }
 code {
   border-radius: 3px;
@@ -536,7 +537,7 @@ pre code {
   width: 100%;
 }
 .post-body .label {
-  color: #555;
+  color: #000;
   padding: 0 2px;
 }
 .post-body .label.default {
@@ -984,7 +985,7 @@ pre code {
   color: var(--brand-hover-color);
 }
 .site-title {
-  font-family: Noto Serif SC, "Noto Serif SC", sans-serif;
+  font-family: Noto Serif SC, "Noto Serif SC", 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-size: 1.375em;
   font-weight: normal;
   line-height: 1.5;
@@ -992,7 +993,7 @@ pre code {
 }
 .site-subtitle {
   color: #999;
-  font-size: 0.8125em;
+  font-size: 1em;
   margin: 10px 0;
 }
 .use-motion .site-title,
@@ -1064,7 +1065,7 @@ pre code {
 .menu-item a {
   border-bottom: 0;
   display: block;
-  font-size: 0.8125em;
+  font-size: 1em;
   transition: border-color 0.2s ease-in-out;
 }
 .menu-item a:hover,
@@ -1134,7 +1135,7 @@ pre code {
   margin-top: 5px;
 }
 .links-of-author a {
-  font-size: 0.8125em;
+  font-size: 1em;
 }
 .links-of-author .fa,
 .links-of-author .fab,
@@ -1165,7 +1166,7 @@ pre code {
   margin-right: 5px;
 }
 .links-of-blogroll {
-  font-size: 0.8125em;
+  font-size: 1em;
 }
 .links-of-blogroll-title {
   font-size: 0.875em;
@@ -1291,11 +1292,11 @@ pre code {
   opacity: 0.8;
   position: fixed;
   z-index: 30;
-  left: 30px;
+  right: 30px;
 }
 @media (max-width: 991px) {
   .sidebar-toggle {
-    left: 20px;
+    right: 20px;
   }
 }
 .sidebar-toggle:hover {
@@ -1311,15 +1312,13 @@ pre code {
 }
 @media (any-hover: hover) {
   body:not(.sidebar-active) .sidebar-toggle:hover :first-child {
-    left: 50%;
     top: 2px;
-    transform: rotate(45deg);
+    transform: rotate(-45deg);
     width: 50%;
   }
   body:not(.sidebar-active) .sidebar-toggle:hover :last-child {
-    left: 50%;
     top: -2px;
-    transform: rotate(-45deg);
+    transform: rotate(45deg);
     width: 50%;
   }
 }
@@ -1328,11 +1327,11 @@ pre code {
 }
 .sidebar-active .sidebar-toggle :first-child {
   top: 6px;
-  transform: rotate(45deg);
+  transform: rotate(-45deg);
 }
 .sidebar-active .sidebar-toggle :last-child {
   top: -6px;
-  transform: rotate(-45deg);
+  transform: rotate(45deg);
 }
 .post-toc {
   font-size: 0.875em;
@@ -1470,7 +1469,7 @@ pre code {
   opacity: 0.8;
   position: fixed;
   z-index: 30;
-  left: 30px;
+  right: 30px;
 }
 .back-to-top span {
   margin-right: 8px;
@@ -1482,7 +1481,7 @@ pre code {
 }
 @media (max-width: 991px) {
   .back-to-top {
-    left: 20px;
+    right: 20px;
   }
 }
 .back-to-top:hover {
@@ -1598,7 +1597,7 @@ pre code {
   border: 1px solid #fff;
   left: -6px;
   position: absolute;
-  top: 0.75em;
+  top: 0.85em;
   transition: background 0.2s ease-in-out;
   border-radius: 50%;
   content: ' ';
@@ -1613,7 +1612,7 @@ pre code {
 }
 .posts-collapse .post-content .post-meta-container {
   display: inline;
-  font-size: 0.75em;
+  font-size: 0.85em;
   margin-right: 10px;
 }
 .posts-collapse .post-content .post-title {
@@ -1637,7 +1636,7 @@ pre code {
   width: 4px;
 }
 .post-body {
-  font-family: Noto Serif SC, "Noto Serif SC", sans-serif;
+  font-family: Noto Serif SC, "Noto Serif SC", 'PingFang SC', 'Microsoft YaHei', sans-serif;
   overflow-wrap: break-word;
 }
 @media (min-width: 1200px) {
@@ -1824,8 +1823,8 @@ pre code {
 }
 .posts-expand .post-meta-container {
   color: #999;
-  font-family: Noto Serif SC, "Noto Serif SC", sans-serif;
-  font-size: 0.75em;
+  font-family: Noto Serif SC, "Noto Serif SC", 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-size: 0.85em;
   margin-top: 3px;
 }
 .posts-expand .post-meta-container .post-description {
@@ -1877,7 +1876,7 @@ pre code {
   top: 2px;
 }
 .post-nav-item .fa {
-  font-size: 0.75em;
+  font-size: 0.85em;
 }
 .post-nav-item:first-child .fa {
   margin-right: 5px;
@@ -1908,7 +1907,7 @@ pre code {
 }
 .post-tags a {
   display: inline-block;
-  font-size: 0.8125em;
+  font-size: 1em;
 }
 .post-tags a:not(:last-child) {
   margin-right: 10px;
@@ -2089,7 +2088,7 @@ pre code {
   }
 }
 ul.breadcrumb {
-  font-size: 0.75em;
+  font-size: 0.85em;
   list-style: none;
   margin: 1em 0;
   padding: 0 2em;
@@ -2198,7 +2197,7 @@ hr {
   }
 }
 .column {
-  background: var(--content-bg-color);
+  background: rgba(200,200,200,0.3);
 }
 header.header {
   align-items: center;
@@ -2393,17 +2392,17 @@ header.header {
 }
 @media (min-width: 1200px) {
   .sidebar-active {
-    padding-left: 320px;
+    padding-right: 320px;
   }
   .sidebar-active .footer-fixed {
-    left: 320px;
+    right: 320px;
   }
 }
 .sidebar {
-  left: -320px;
+  right: -320px;
 }
 .sidebar-active .sidebar {
-  left: 0;
+  right: 0;
 }
 .sidebar {
   background: #222;
@@ -2436,7 +2435,7 @@ header.header {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #4effe7;
+  background: #2f1bcc;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2485,4 +2484,24 @@ header.header {
 }
 .sub-menu .menu-item {
   display: inline-block;
+}
+body {
+  background: url("/images/bg.png");
+  background-repeat: repeat;
+  background-attachment: local;
+  background-position: 50% 50%;
+  background-size: contain;
+}
+.header-inner {
+  background: rgba(255,255,255,0.5);
+}
+body {
+  background: url("/images/bg.png");
+  background-repeat: repeat;
+  background-attachment: local;
+  background-position: 50% 50%;
+  background-size: contain;
+}
+.header-inner {
+  background: rgba(255,255,255,0.5);
 }
