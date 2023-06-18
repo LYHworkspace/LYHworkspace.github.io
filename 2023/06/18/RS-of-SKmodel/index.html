@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="https://fonts.lug.ustc.edu.cn/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="[object Object]">
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC|Roboto&display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.17.0","exturl":false,"sidebar":{"position":"right","display":"hide","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Abstract S-K model 的复本对称解的详细计算，主要参考了 Nishimori 的 Statistical Physics of Spin Glasses and Information Processing An Introduction 第二章以及 Haozhe Shan 的笔记 Replica calculations for the SK model">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Note | S-K model 的复本对称计算">
+<meta property="og:url" content="http://example.com/2023/06/18/RS-of-SKmodel/index.html">
+<meta property="og:site_name" content="Li Yuhao&#39;s Blog">
+<meta property="og:description" content="Abstract S-K model 的复本对称解的详细计算，主要参考了 Nishimori 的 Statistical Physics of Spin Glasses and Information Processing An Introduction 第二章以及 Haozhe Shan 的笔记 Replica calculations for the SK model">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-06-18T09:05:32.000Z">
+<meta property="article:modified_time" content="2023-06-18T09:28:03.049Z">
+<meta property="article:author" content="Li Yuhao">
+<meta property="article:tag" content="Replica">
+<meta property="article:tag" content="Spin Glass">
+<meta property="article:tag" content="S-K model">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2023/06/18/RS-of-SKmodel/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/06/18/RS-of-SKmodel/","path":"2023/06/18/RS-of-SKmodel/","title":"Note | S-K model 的复本对称计算"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Note | S-K model 的复本对称计算 | Li Yuhao's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Li Yuhao's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a></li><li class="menu-item menu-item-home"><a href="https://www.lyhspace.com/" rel="section" target="_blank"><i class="fa fa-home fa-fw"></i>Home</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#intro"><span class="nav-number">1.</span> <span class="nav-text">Intro</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%8D%E6%9C%AC%E6%8A%80%E5%B7%A7-replica-trick"><span class="nav-number">2.</span> <span class="nav-text">复本技巧 Replica trick</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%8D%E6%9C%AC%E5%AF%B9%E7%A7%B0%E8%A7%A3-replica-symmetry-solution"><span class="nav-number">3.</span> <span class="nav-text">复本对称解 Replica
+Symmetry Solution</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Li Yuhao"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Li Yuhao</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/06/18/RS-of-SKmodel/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Li Yuhao">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Li Yuhao's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Note | S-K model 的复本对称计算 | Li Yuhao's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Note | S-K model 的复本对称计算
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-06-18 17:05:32 / 修改时间：17:28:03" itemprop="dateCreated datePublished" datetime="2023-06-18T17:05:32+08:00">2023-06-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p><strong>Abstract</strong><br />
+S-K model 的复本对称解的详细计算，主要参考了 Nishimori 的
+<em>Statistical Physics of Spin Glasses and Information Processing An
+Introduction</em> 第二章以及 Haozhe Shan 的笔记 <em>Replica calculations
+for the SK model</em></p>
+</blockquote>
+<span id="more"></span>
+<h1 id="intro">Intro</h1>
+<p>S-K模型的哈密顿量和配分函数分别为</p>
+<p><span class="math display">\[
+\begin{align}
+    H&amp;=-\sum_{i&lt;j} J_{i j} S_i S_j-h \sum_i S_i\\
+Z&amp;=\mathrm{Tr~}e^{-\beta H}
+\end{align}
+\]</span></p>
+<p>其中，<span class="math inline">\(J_{ij}\)</span> 服从高斯分布 <span
+class="math inline">\(J_{ij}\sim
+N\left(\frac{J_0}{N},\frac{J^2}{N}\right)\)</span>.
+注意这里的高斯分布含有归一化因子<span
+class="math inline">\(1/N\)</span>，这是为了保证哈密顿量 <span
+class="math inline">\(\mathcal{O}(N)\)</span>，即是一个广延量.
+利用配分函数可以计算自由能：</p>
+<p><span class="math display">\[
+\begin{equation}
+    F=-T\log Z=-T\log \mathrm{Tr~}e^{-\beta H}
+\end{equation}
+\]</span></p>
+<p>注意到，<span class="math inline">\(F\)</span>是<span
+class="math inline">\(Z\)</span>的函数，而 <span
+class="math inline">\(Z\)</span>是 <span
+class="math inline">\(\boldsymbol{J}\equiv\{J_{ij}\}\)</span>
+的函数.对于一个确定的系统，<span
+class="math inline">\(\boldsymbol{J}\)</span>是从高斯分布中取出来的一个固定的集合（这个过程称为“淬火”，quenched）.为了获得最终的自由能，我们需要将<span
+class="math inline">\(F\)</span>对<span
+class="math inline">\(\boldsymbol{J}\)</span>取平均，也即对 <span
+class="math inline">\(\log Z\)</span>
+取平均（称为构型平均，configurational average）：</p>
+<p><span class="math display">\[
+\begin{equation}
+    [F]=-T[\log Z]=-T\int \prod_{(ij)}\mathrm{d}J_{ij}P(J_{ij})\log Z
+\end{equation}
+\]</span></p>
+<h1 id="复本技巧-replica-trick">复本技巧 Replica trick</h1>
+<p><span class="math inline">\([F]\)</span> 中的 <span
+class="math inline">\(\log Z\)</span> 对 <span
+class="math inline">\(\boldsymbol{J}\)</span>
+的依赖关系是十分复杂的，我们无法直接求 <span class="math inline">\([\log
+Z]\)</span>. 可以利用如下一个数学技巧（称为复本技巧，replica trick）将对
+<span class="math inline">\(\log Z\)</span> 的构型平均转移到对 <span
+class="math inline">\(Z^n\)</span> 的构型平均（称为复本平均，replica
+average）</p>
+<p><span class="math display">\[
+\begin{equation}
+[\log Z]=\lim_{n\to 0}\frac{[Z^n]-1}{n}    
+\end{equation}
+\]</span></p>
+<p>利用复本技巧，我们可以写出配分函数的复本平均为</p>
+<p><span class="math display">\[
+\begin{equation}
+\left[Z^n\right]=\int \prod_{i&lt;j} d J_{i j} P\left(J_{i
+j}\right)\mathrm{~~Tr~} \exp \left(\beta \sum_{i&lt;j} J_{i j}
+\sum_{\alpha=1}^n S_i^\alpha S_j^\alpha+\beta h \sum_{i=1}^N
+\sum_{\alpha=1}^n S_i^\alpha\right)
+\end{equation}
+\]</span></p>
+<p>其中，<span
+class="math inline">\(\alpha\)</span>称为复本指标（replica
+index），<span
+class="math inline">\(\mathrm{Tr~}=\sum_{\left\{\mathbf{s}^\alpha,
+\mathbf{s}^\beta, \ldots, \mathbf{s}^n\right\}}\)</span>. 将 <span
+class="math inline">\(P\left(J_{i j}\right)\)</span> 的表达式</p>
+<p><span class="math display">\[
+\begin{equation}
+    P\left(J_{i j}\right)=\frac{1}{J} \sqrt{\frac{N}{2 \pi}} \exp
+\left\{-\frac{N}{2 J^2}\left(J_{i j}-\frac{J_0}{N}\right)^2\right\}
+\end{equation}
+\]</span></p>
+<p>代入复本平均中，然后进行一个看不懂的积分，得</p>
+<p><span class="math display">\[
+\begin{equation}
+\left[Z^n\right]=C_1 \mathrm{~~Tr~} \exp \left\{\frac{1}{N}
+\sum_{i&lt;j}\left(\frac{1}{2} \beta^2 J^2 \sum_{\alpha, \beta}
+S_i^\alpha S_j^\alpha S_i^\beta S_j^\beta+\beta J_0 \sum_\alpha
+S_i^\alpha S_j^\alpha\right)+\beta h \sum_{i=1}^N \sum_{\alpha=1}^n
+S_i^\alpha\right\}
+\end{equation}
+\]</span></p>
+<p>利用如下技巧</p>
+<p><span class="math display">\[
+\begin{equation}
+    \sum_{\alpha, \beta} S_i^\alpha S_j^\alpha S_i^\beta S_j^\beta=2
+\sum_{\alpha&lt;\beta} S_i^\alpha S_j^\alpha S_i^\beta
+S_j^\beta+\sum_\alpha\left(S_i^\alpha S_j^\alpha\right)^2=2
+\sum_{\alpha&lt;\beta} S_i^\alpha S_j^\alpha S_i^\beta S_j^\beta+n
+\end{equation}
+\]</span></p>
+<p>将指数部分改写为</p>
+<p><span class="math display">\[
+\begin{equation}
+\exp \left\{\frac{1}{N} \sum_{i&lt;j}\left(\frac{1}{2} \beta^2
+J^2\left(2 \sum_{\alpha&lt;\beta} S_i^\alpha S_j^\alpha S_i^\beta
+S_j^\beta+n\right)+\beta J_0 \sum_\alpha S_i^\alpha
+S_j^\alpha\right)+\beta h \sum_{i=1}^N \sum_{\alpha=1}^n
+S_i^\alpha\right\}
+\end{equation}
+\]</span></p>
+<p>注意到指数上第一项中的求和号中含有与 <span
+class="math inline">\(i\)</span>、 <span
+class="math inline">\(j\)</span> 无关的项 <span
+class="math inline">\(\frac{1}{2} \beta^2 J^2n\)</span>，并且求和 <span
+class="math inline">\(\sum_{i&lt;j}\)</span> 共有 <span
+class="math inline">\(N(N-1)/2\)</span>
+项，因此将常数项提到前面，改写为</p>
+<p><span class="math display">\[
+\begin{equation}
+\begin{aligned}
+\left[Z^n\right]=&amp;C_1 \exp \left(\frac{(N-1) \beta^2 J^2
+n}{4}\right) \\
+&amp;\mathrm{Tr~} \exp \left\{\frac{1}{N} \sum_{i&lt;j}\left(\beta^2 J^2
+\sum_{\alpha&lt;\beta} S_i^\alpha S_j^\alpha S_i^\beta S_j^\beta+\beta
+J_0 \sum_\alpha S_i^\alpha S_j^\alpha\right)+\beta h \sum_{i=1}^N
+\sum_{\alpha=1}^n S_i^\alpha\right\}
+\end{aligned}
+\end{equation}
+\]</span></p>
+<p>并且，根据一个技巧 <span
+class="math inline">\(\left(\sum_iA_i\right)^2=\sum_iA_i^2+\sum_{i\neq
+j}A_iA_j=\sum_iA_i^2+2\sum_{i&lt; j}A_iA_j\)</span>，即</p>
+<p><span class="math display">\[
+\begin{equation}
+    \sum_{i&lt;
+j}A_iA_j=\frac{1}{2}\left(\left(\sum_iA_i\right)^2-\sum_iA_i^2\right)
+\end{equation}
+\]</span></p>
+<p>可以分别改写</p>
+<p><span class="math display">\[
+\begin{equation}
+\begin{aligned}
+\frac{1}{N} \sum_{i&lt;j} \beta^2 J^2 \sum_{\alpha&lt;\beta} S_i^\alpha
+S_j^\alpha S_i^\beta S_j^\beta &amp; =\frac{\beta^2 J^2}{2
+N}\left(\sum_{\alpha&lt;\beta}\left(\sum_i S_i^\alpha
+S_i^\beta\right)^2-\sum_i \sum_{\alpha&lt;\beta}  (S_i^\alpha)^2
+(S_i^\beta)^2\right) \\
+&amp; =\frac{\beta^2 J^2}{2 N} \sum_{\alpha&lt;\beta}\left(\sum_i
+S_i^\alpha S_i^\beta\right)^2-\frac{\beta^2 J^2}{2 N} \sum_i
+\sum_{\alpha&lt;\beta} 1
+\end{aligned}
+\end{equation}
+\]</span></p>
+<p>和</p>
+<p><span class="math display">\[
+\begin{equation}
+\begin{aligned}
+\frac{\beta J_0}{N} \sum_{i&lt;j} \sum_\alpha S_i^\alpha
+S_j^\alpha&amp;=\frac{\beta J_0}{2 N}\left(\sum_\alpha\left(\sum_i
+S_i^\alpha\right)^2 -\sum_i \sum_{\alpha}  (S_i^\alpha)^2 \right) \\
+&amp;=\frac{\beta J_0}{2 N} \sum_\alpha\left(\sum_i
+S_i^\alpha\right)^2-\frac{\beta J_0}{2 N} \sum_i \sum_\alpha 1
+\end{aligned}
+\end{equation}
+\]</span></p>
+<p>忽略掉上两式中的常数项，并且根据大 <span
+class="math inline">\(N\)</span> 极限下的近似 <span
+class="math inline">\(\exp \left(\frac{(N-1) \beta^2 J^2
+n}{4}\right)\approx \exp \left(\frac{N \beta^2 J^2
+n}{4}\right)\)</span>，有</p>
+<p><span class="math display">\[
+\begin{equation}
+\begin{aligned}
+\left[Z^n\right]&amp;=C_2 \exp \left(\frac{N \beta^2 J^2 n}{4}\right)\\
+&amp;=\mathrm{Tr~} \exp \left\{\frac{\beta^2 J^2}{2 N}
+\sum_{\alpha&lt;\beta}\left(\sum_i S_i^\alpha
+S_i^\beta\right)^2+\frac{\beta J_0}{2 N} \sum_\alpha\left(\sum_i
+S_i^\alpha\right)^2+\beta h \sum_{i=1}^N \sum_{\alpha=1}^n
+S_i^\alpha\right\}
+\end{aligned}
+\end{equation}
+\]</span></p>
+<p>再利用如下变换（称为 Hubbard-Stratonovich 变换）将 <span
+class="math inline">\(\left(\sum_i S_i^\alpha
+S_i^\beta\right)^2\)</span> 和 <span class="math inline">\(\left(\sum_i
+S_i^\alpha\right)^2\)</span> 线性化</p>
+<p><span class="math display">\[
+\begin{equation}
+\exp \left(\frac{y^2}{2}\right)=\int_{-\infty}^{\infty} \frac{\mathrm{d}
+x}{\sqrt{2 \pi}} \exp \left(-\frac{x^2}{2}\right) \exp (x y)
+\end{equation}
+\]</span></p>
+<p>令 <span class="math inline">\(x:=\beta
+J\sqrt{N}q_{\alpha\beta}\)</span>，<span class="math inline">\(y:=\beta
+J\sum_i S_i^\alpha S_i^\beta/\sqrt{N}\)</span>，有</p>
+<p><span class="math display">\[
+\begin{equation}
+\exp \frac{\beta^2 J^2}{2 N}\left(\sum_i S_i^\alpha
+S_i^\beta\right)^2  =\int_{-\infty}^{\infty} \frac{\mathrm{d} q_{\alpha
+\beta}}{\sqrt{2 \pi}} \exp \left(-\beta^2 J^2 N \frac{q_{\alpha
+\beta}^2}{2}+\beta^2 J^2 q_{\alpha \beta} \sum_i S_i^\alpha
+S_i^\beta\right)
+\end{equation}
+\]</span></p>
+<p>令 <span class="math inline">\(x:=\sqrt{\beta
+JN}m_{\alpha}\)</span>，<span class="math inline">\(y:=\sqrt{\beta
+J/N}\sum_i S_i^\alpha\)</span>，有</p>
+<p><span class="math display">\[
+\begin{equation}
+\exp \frac{\beta J_0}{2 N}\left(\sum_i S_i^\alpha\right)^2
+=\int_{-\infty}^{\infty} \frac{\mathrm{d} m_\alpha}{\sqrt{2 \pi}} \exp
+\left(-\beta J_0 N m_\alpha^2+\beta J_0 m_\alpha \sum_i
+S_i^\alpha\right)
+\end{equation}
+\]</span></p>
+<p>其中，忽略了积分号前面的常数（由 <span
+class="math inline">\(\mathrm{d}x\)</span>带来的）. <span
+class="math inline">\(\left[Z^n\right]\)</span> 继续改写为</p>
+<p><span class="math display">\[
+\begin{equation}
+\begin{aligned}
+\left[Z^n\right]=&amp;\;C_3 \exp \left(\frac{N \beta^2 J^2 n}{4}\right)
+\int_{-\infty}^{\infty} \prod_{\alpha&lt;\beta} \mathrm{d}q_{\alpha
+\beta} \prod_\alpha \mathrm{d}m_\alpha\\
+&amp;\mathrm{Tr~} \exp \left(-\frac{\beta^2 J^2 N}{2}
+\sum_{\alpha&lt;\beta} q_{\alpha \beta}^2-\frac{\beta J_0 N}{2}
+\sum_\alpha m_\alpha^2\right) \\
+&amp;\exp \left(\beta^2 J^2 \sum_{\alpha&lt;\beta} q_{\alpha \beta}
+\sum_i S_i^\alpha S_i^\beta+\beta J_0 \sum_\alpha m_\alpha \sum_i
+S_i^\alpha\right) \exp \left(\beta h \sum_{i=1}^N \sum_{\alpha=1}^n
+S_i^\alpha\right)\\
+=&amp;\;C_3 \exp \left(\frac{N \beta^2 J^2 n}{4}\right)
+\int_{-\infty}^{\infty} \prod_{\alpha&lt;\beta} \mathrm{d}q_{\alpha
+\beta} \prod_\alpha \mathrm{d}m_\alpha\;\;\exp \left(-\frac{\beta^2 J^2
+N}{2} \sum_{\alpha&lt;\beta} q_{\alpha \beta}^2-\frac{\beta J_0 N}{2}
+\sum_\alpha m_\alpha^2\right) \\
+&amp;\mathrm{Tr~}\exp \left(\beta^2 J^2 \sum_{\alpha&lt;\beta} q_{\alpha
+\beta} \sum_i S_i^\alpha S_i^\beta+\beta \sum_\alpha\left(J_0
+m_\alpha+h\right) \sum_i S_i^\alpha\right)
+\end{aligned}
+\end{equation}
+\]</span></p>
+<p>将最后一项指数上的求和号拿下来成为连乘号，即</p>
+<p><span class="math display">\[
+\begin{equation}
+    \prod_{i=1}^N \mathrm{Tr~}\exp \left(\beta^2 J^2
+\sum_{\alpha&lt;\beta} q_{\alpha \beta} S_i^\alpha S_i^\beta+\beta
+\sum_\alpha\left(J_0 m_\alpha+h\right)  S_i^\alpha\right)
+\end{equation}
+\]</span></p>
+<p>令</p>
+<p><span class="math display">\[
+\begin{equation}
+    L:=\beta^2 J^2 \sum_{\alpha&lt;\beta} q_{\alpha \beta} S_i^\alpha
+S_i^\beta+\beta \sum_\alpha\left(J_0 m_\alpha+h\right)  S_i^\alpha
+\end{equation}
+\]</span></p>
+<p>考虑到连乘中的每一项都是对相同的变量 <span
+class="math inline">\(\left\{\mathbf{s}^\alpha, \mathbf{s}^\beta,
+\ldots, \mathbf{s}^n\right\}\)</span> 的相同取值 <span
+class="math inline">\(\{\pm 1\}\)</span> 进行的，与 <span
+class="math inline">\(i\)</span> 无关，因此</p>
+<p><span class="math display">\[
+\begin{equation}
+    \prod_{i=1}^N \mathrm{Tr~}\exp \left(L\right)=\Big(\mathrm{Tr~}\exp
+\left(L\right)\Big)^N=\exp \Big\{ N\log\Big(\mathrm{Tr~}\exp
+\left(L\right)\Big) \Big\}
+\end{equation}
+\]</span></p>
+<p><span class="math inline">\(\left[Z^n\right]\)</span> 改写为</p>
+<p><span class="math display">\[
+\begin{equation}
+\begin{aligned}
+\left[Z^n\right] =&amp;C_4 \exp \left(\frac{N \beta^2 J^2 n}{4}\right)
+\int_{-\infty}^{\infty} \prod_{\alpha&lt;\beta} d q_{\alpha \beta}
+\prod_\alpha d m_\alpha \\
+&amp; \exp \left\{-\frac{\beta^2 J^2 N}{2} \sum_{\alpha&lt;\beta}
+q_{\alpha \beta}^2-\frac{\beta J_0 N}{2} \sum_\alpha
+m_\alpha^2+N\log\Big(\mathrm{Tr~}\exp \left(L\right)\Big)\right\}
+\end{aligned}
+\end{equation}
+\]</span></p>
+<p>接下来用鞍点近似法（method of steepest descent）来考虑这个积分.
+上式的积分中，最后一项指数上与 <span class="math inline">\(N\)</span>
+成正比，在大 <span
+class="math inline">\(N\)</span>极限下，积分结果由指数上的宗量的最大值决定.
+即</p>
+<p><span class="math display">\[
+\begin{equation}
+\left[Z^n\right]=C_4 \exp \left\{\frac{N \beta^2 J^2 n}{4}-\frac{\beta^2
+J^2 N}{2} \sum_{\alpha&lt;\beta}\left(q_{\alpha
+\beta}^{\star}\right)^2-\frac{\beta J_0 N}{2}
+\sum_\alpha\left(m_\alpha^{\star}\right)^2+N \log \mathrm{Tr~} \exp
+(L)\right\}
+\end{equation}
+\]</span></p>
+<p>其中，<span class="math inline">\(\left\{q_{\alpha \beta}^{\star},
+m_\alpha^{\star}\right\}=\arg \max _{\left\{q_{\alpha \beta},
+m_\alpha\right\}} E\)</span></p>
+<p><span class="math display">\[
+\begin{equation}
+\begin{aligned}
+E:=-\frac{\beta^2 J^2 N}{2} \sum_{\alpha&lt;\beta} q_{\alpha
+\beta}^2-\frac{\beta J_0 N}{2} \sum_\alpha m_\alpha^2+N \log
+\mathrm{Tr~}\exp (L)
+\end{aligned}
+\end{equation}
+\]</span></p>
+<p>令 <span class="math inline">\(\frac{\partial}{\partial
+q_{\alpha\beta}}E=0\)</span>，得</p>
+<p><span class="math display">\[
+\begin{equation}
+q_{\alpha \beta}^{\star}=\frac{1}{\beta^2 J^2} \frac{\partial}{\partial
+q_{\alpha \beta}} \log \mathrm{Tr~} \exp (L)=\frac{1}{\beta^2 J^2}
+\frac{\mathrm{Tr~} \exp (L) \beta^2 J^2}{\mathrm{Tr~}\exp (L)} S^\alpha
+S^\beta=\frac{\mathrm{Tr~} S^\alpha S^\beta \exp (L)}{\mathrm{Tr~}\exp
+(L)}
+\end{equation}
+\]</span></p>
+<p>令 <span class="math inline">\(\frac{\partial}{\partial
+m_{\alpha}}E=0\)</span>，得</p>
+<p><span class="math display">\[
+\begin{equation}
+m_\alpha^{\star}=\frac{1}{\beta J_0} \frac{\partial}{\partial m_\alpha}
+\log \mathrm{Tr~}  \exp (L)=\frac{1}{\beta J_0}\frac{\mathrm{Tr~}  \exp
+(L)\beta J_0}{\mathrm{Tr~}  \exp (L)}
+S^\alpha=\frac{\mathrm{Tr~}  S^\alpha \exp (L)}{\mathrm{Tr~}  \exp (L)}
+\end{equation}
+\]</span></p>
+<p>再将 <span class="math inline">\(\left[Z^n\right]\)</span> 改写为</p>
+<p><span class="math display">\[
+\begin{equation}
+\left[Z^n\right]=C_4 \exp \left\{N n\left(\frac{\beta^2
+J^2}{4}-\frac{\beta^2 J^2}{2 n} \sum_{\alpha&lt;\beta}\left(q_{\alpha
+\beta}^{\star}\right)^2-\frac{\beta J_0}{2 n}
+\sum_\alpha\left(m_\alpha^{\star}\right)^2+\frac{1}{n} \log\mathrm{Tr~}
+\exp (L)\right)\right\}
+\end{equation}
+\]</span></p>
+<p>考虑 <span class="math inline">\(n\to 0\)</span>
+的极限，此时指数上的宗量趋于零（这里其实是一个“<span
+class="math inline">\(0\cdot\infty\)</span>”极限未定式，应当讨论无穷的阶数.
+但是现在先姑且认为 <span
+class="math inline">\(0\cdot\infty=0\)</span>），利用Maclaurin展开得</p>
+<p><span class="math display">\[
+\begin{equation}
+\left[Z^n\right] \approx 1+N n\left\{\frac{\beta^2 J^2}{4}-\frac{\beta^2
+J^2}{2 n} \sum_{\alpha&lt;\beta}\left(q_{\alpha
+\beta}^{\star}\right)^2-\frac{\beta J_0}{2 n}
+\sum_\alpha\left(m_\alpha^{\star}\right)^2+\frac{1}{n} \log \mathrm{Tr~}
+\exp (L)\right\}
+\end{equation}
+\]</span></p>
+<p>至此，<span class="math inline">\(\left[\log Z\right]\)</span>
+可以写为</p>
+<p><span class="math display">\[
+\begin{equation}
+\begin{aligned}
+[\log Z] &amp; =N\lim _{n \rightarrow 0} \frac{\left[Z^n\right]-1}{N n}
+\\
+&amp; =N\lim _{n \rightarrow 0}\left\{\frac{\beta^2
+J^2}{4}-\frac{\beta^2 J^2}{2 n} \sum_{\alpha&lt;\beta}\left(q_{\alpha
+\beta}^{\star}\right)^2-\frac{\beta J_0}{2 n}
+\sum_\alpha\left(m_\alpha^{\star}\right)^2+\frac{1}{n} \log
+\mathrm{Tr~}  \exp (L)\right\}
+\end{aligned}
+\end{equation}
+\]</span></p>
+<h1 id="复本对称解-replica-symmetry-solution">复本对称解 Replica
+Symmetry Solution</h1>
+<p>根据复本对称假设 <span class="math inline">\(\forall \alpha, \beta:
+q_{\alpha \beta}=q, m_\alpha=m\)</span>，上式可以写为</p>
+<p><span class="math display">\[
+\begin{equation}
+\begin{aligned}
+[\log Z] &amp; =N\lim _{n \rightarrow 0}\left\{\frac{\beta^2
+J^2}{4}-\frac{\beta^2 J^2(n-1)}{4} q^2-\frac{\beta J_0}{2}
+m^2+\frac{1}{n} \log \mathrm{Tr~} \exp \left(L*\right)\right\} \\
+&amp; =N\left\{\frac{\beta^2 J^2}{4}\left(1+q^2\right)-\frac{\beta
+J_0}{2} m^2+\lim _{n \rightarrow 0} \frac{1}{n} \log \mathrm{Tr~} \exp
+\left(L*\right)\right\}
+\end{aligned}
+\end{equation}
+\]</span></p>
+<p>其中第一步用到了求和 <span
+class="math inline">\(\sum_{\alpha&lt;\beta}\)</span> 共有 <span
+class="math inline">\(n(n-1)/2\)</span> 项，并且</p>
+<p><span class="math display">\[
+\begin{equation}
+    L*:=L(q_{\alpha \beta}=q, m_\alpha=m)=\beta^2 J^2 q
+\sum_{\alpha&lt;\beta} S^\alpha S^\beta+\beta\left(J_0 m+h\right)
+\sum_\alpha S^\alpha
+\end{equation}
+\]</span></p>
+<p>考虑最后一项</p>
+<p><span class="math display">\[
+\begin{equation}
+\begin{aligned}
+&amp;\frac{1}{n} \log \mathrm{Tr~} \exp \left(L*\right)\\
+&amp;=\frac{1}{n} \log \mathrm{Tr~}\exp \left(\beta^2 J^2 q
+\sum_{\alpha&lt;\beta} S^\alpha S^\beta+\beta\left(J_0 m+h\right)
+\sum_\alpha S^\alpha\right)\\
+&amp;=\frac{1}{n} \log \mathrm{Tr~}\exp \left\{\frac{1}{2}\beta^2 J^2 q
+\left(\sum_{\alpha} S^\alpha \right)^2-\frac{1}{2}\beta^2 J^2
+qn+\beta\left(J_0 m+h\right) \sum_\alpha S^\alpha\right\}\\
+&amp;=\frac{1}{n} \log \left\{ \exp\left( -\frac{\beta^2 J^2 qn}{2}
+\right) \mathrm{Tr~}\exp
+\left[ \frac{1}{2}\beta^2 J^2 q \left(\sum_{\alpha} S^\alpha
+\right)^2+\beta\left(J_0 m+h\right) \sum_\alpha S^\alpha \right]
+\right\}
+\end{aligned}
+\end{equation}
+\]</span></p>
+<p>对于<span class="math inline">\(\exp \left[ \frac{1}{2}\beta^2 J^2 q
+\left(\sum_{\alpha} S^\alpha \right)^2\right]\)</span>，再次使用
+Hubbard-Stratonovich 变换对其线性化：<br />
+令<span class="math inline">\(x:=\hat{z}\beta J\sqrt{q}\)</span>，<span
+class="math inline">\(y:=\beta J\sqrt{q}\sum_\alpha
+S^\alpha\)</span>，有</p>
+<p><span class="math display">\[
+\begin{equation}
+    \exp \left[ \frac{1}{2}\beta^2 J^2 q \left(\sum_{\alpha} S^\alpha
+\right)^2\right]=\int_C \mathrm{d}\hat{z}\sqrt{\frac{\beta^2 J^2
+q}{2\pi}}\exp\left(-\frac{\hat{z}^2}{2}\beta^2 J^2
+q\right)\exp\left(\beta^2 J^2 q\hat{z}\sum_{\alpha} S^\alpha\right)
+\end{equation}
+\]</span></p>
+<p>注意到 <span class="math display">\[
+\begin{equation}
+    \mathrm{d}\hat{z}\sqrt{\frac{\beta^2 J^2
+q}{2\pi}}\exp\left(-\frac{\hat{z}^2}{2}\beta^2 J^2
+q\right)=\mathrm{d}\hat{z}p(\hat{z}),\quad
+p(\hat{z}):=\sqrt{\frac{\beta^2 J^2
+q}{2\pi}}\exp\left(-\frac{\hat{z}^2}{2}\beta^2 J^2 q\right)
+\end{equation}
+\]</span> 即 <span class="math inline">\(\hat{z}\)</span> 是一个服从
+<span class="math inline">\(p(\hat{z})\)</span>
+的高斯变量，将其变换为标准高斯，即令 <span
+class="math inline">\(z=\sqrt{\beta^2 J^2 q}\hat{z}\)</span>，则 <span
+class="math inline">\(z\sim\mathcal{N}(0,1)\)</span>，则有</p>
+<p><span class="math display">\[
+\begin{equation}
+\begin{aligned}
+\exp \left[ \frac{1}{2}\beta^2 J^2 q \left(\sum_{\alpha} S^\alpha
+\right)^2\right]&amp;=\int_C \frac{\mathrm{d}z}{\sqrt{2\pi}}
+\exp\left(-\frac{z^2}{2}\right)\exp\left(\beta J\sqrt{q}z\sum_{\alpha}
+S^\alpha\right)\\
+&amp;=\int_C Dz\exp\left(\beta J\sqrt{q}z\sum_{\alpha} S^\alpha\right)
+\end{aligned}
+\end{equation}
+\]</span></p>
+<p>其中，$Dz=z(-z^2/2)/ $ 是标准高斯测度. 因此有</p>
+<p><span class="math display">\[
+\begin{equation}
+\begin{aligned}
+&amp;\frac{1}{n} \log \mathrm{Tr~} \exp \left(L*\right)\\
+&amp;=\frac{1}{n} \log \left\{ \exp\left( -\frac{\beta^2 J^2 qn}{2}
+\right) \mathrm{Tr~}\exp
+\left[ \frac{1}{2}\beta^2 J^2 q \left(\sum_{\alpha} S^\alpha
+\right)^2+\beta\left(J_0 m+h\right) \sum_\alpha S^\alpha \right]
+\right\}\\
+&amp;=\frac{1}{n} \log \left\{ \exp\left( -\frac{\beta^2 J^2 qn}{2}
+\right) \mathrm{Tr~}\int_C Dz\exp\left(\beta J\sqrt{q}z\sum_{\alpha}
+S^\alpha+\beta\left(J_0 m+h\right) \sum_\alpha S^\alpha\right)\right\}
+\end{aligned}
+\end{equation}
+\]</span></p>
+<p>对于上式最后一项，有</p>
+<p><span class="math display">\[
+\begin{equation}
+\begin{aligned}
+&amp;\mathrm{Tr~}\int_C Dz\exp\left(\beta J\sqrt{q}z\sum_{\alpha}
+S^\alpha+\beta\left(J_0 m+h\right) \sum_\alpha S^\alpha\right)\\
+&amp;=\int_C Dz\mathrm{~Tr~}\exp\left[\sum_{\alpha} S^\alpha\Big(\beta
+J\sqrt{q}z+\beta\left(J_0 m+h\right)\Big)\right]\\
+&amp;=\int_C Dz
+\prod_{\alpha=1}^n\mathrm{Tr~}\exp\left[S^\alpha\Big(\beta
+J\sqrt{q}z+\beta\left(J_0 m+h\right)\Big)\right]\\
+&amp;=\int_C Dz
+\prod_{\alpha=1}^n\mathrm{Tr~}\exp\left[S^\alpha\beta\hat{H}(z)\right]
+\end{aligned}
+\end{equation}
+\]</span></p>
+<p>其中，<span class="math inline">\(\hat{H}(z):=J\sqrt{q}z+\left(J_0
+m+h\right)\)</span>.<br />
+注意到上式最后一步连乘中的每一项都是同样对 <span
+class="math inline">\(\{ S^\alpha =\pm 1 \}\)</span>
+求和，因此连乘可以转为指数 <span class="math display">\[
+\begin{equation}
+\begin{aligned}
+\prod_{\alpha=1}^n\mathrm{Tr~}\exp\left[S^\alpha\beta\hat{H}(z)\right]&amp;=\prod_{\alpha=1}^n
+\left\{ \exp\Big(-\beta\hat{H}(z)\Big) +\exp\Big(\beta\hat{H}(z)\Big)
+\right\}\\
+&amp;=\left\{ 2\cosh\Big(\beta\hat{H}(z)\Big)
+\right\}^n=\exp\left\{n\log \left[2\cosh\Big(\beta\hat{H}(z)\Big)
+\right]\right\}
+\end{aligned}
+\end{equation}
+\]</span></p>
+<p><span class="math inline">\(\log \mathrm{Tr~} \exp
+\left(L*\right)/n\)</span> 最终写为</p>
+<p><span class="math display">\[
+\begin{equation}
+\begin{aligned}
+&amp;\frac{1}{n} \log \mathrm{Tr~} \exp \left(L*\right)\\
+&amp;=\frac{1}{n} \log \left\{ \exp\left( -\frac{\beta^2 J^2 qn}{2}
+\right) \int Dz \exp\left\{n\log \left[2\cosh\Big(\beta\hat{H}(z)\Big)
+\right] \right\}\right\}\\
+&amp;=\frac{1}{n} \log \int Dz~ \exp\left\{n\log
+\left[2\cosh\Big(\beta\hat{H}(z)\Big)\right]  -\frac{n}{2}\beta^2 J^2 q
+\right\}
+\end{aligned}
+\end{equation}
+\]</span></p>
+<p>当 <span class="math inline">\(n\to
+0\)</span>时，利用麦克劳林展开</p>
+<p><span class="math display">\[
+\begin{equation}
+\begin{aligned}
+\frac{1}{n} \log \mathrm{Tr~} \exp \left(L*\right) &amp;\approx
+\frac{1}{n} \log \left\{1+n \int D z~ \log\left[
+2\cosh\Big(\beta\hat{H}(z)\Big)\right]-\frac{n}{2} \beta^2 J^2 q\int D
+z\right\}\\
+&amp;\approx \int D z~ \log\left[ 2 \cosh
+\Big(\beta\hat{H}(z)\Big)\right] -\frac{1}{2} \beta^2 J^2 q
+\end{aligned}
+\end{equation}
+\]</span></p>
+<p>其中，第一步是利用指数函数在 <span class="math inline">\(0\)</span>
+附近的展开，第二步是利用对数函数在 <span
+class="math inline">\(1\)</span> 附近的展开.<br />
+由此，<span class="math inline">\([\log Z]\)</span> 写为</p>
+<p><span class="math display">\[
+\begin{equation}
+\begin{aligned}
+[\log Z] &amp;=N\left\{\frac{\beta^2
+J^2}{4}\left(1+q^2\right)-\frac{\beta J_0}{2} m^2+\lim _{n \rightarrow
+0} \left\{\int D z~ \log\left[ 2 \cosh \Big(\beta\hat{H}(z)\Big)\right]
+-\frac{1}{2} \beta^2 J^2 q\right\}\right\}\\
+&amp;=N\left\{\frac{\beta^2 J^2}{4}\left(1-q^2\right)-\frac{\beta
+J_0}{2} m^2+\int D z~ \log\left[ 2 \cosh
+\Big(\beta\hat{H}(z)\Big)\right]\right\}
+\end{aligned}
+\end{equation}
+\]</span></p>
+<p>根据</p>
+<p><span class="math display">\[
+\begin{equation}
+\begin{aligned}
+&amp;\frac{\partial}{\partial m}[\log Z]= -\beta J_0m+\int \mathrm{D}
+z(\tanh \beta \tilde{H}(z)) \cdot \beta J_0=0\\
+&amp;\frac{\partial}{\partial q}[\log Z]= \frac{\beta^2
+J^2}{2}(q-1)+\int \mathrm{D} z(\tanh \beta \tilde{H}(z)) \cdot
+\frac{\beta J}{2 \sqrt{q}} z=0
+\end{aligned}
+\end{equation}
+\]</span></p>
+<p>得</p>
+<p><span class="math display">\[
+\begin{equation}
+\begin{aligned}
+&amp;m=\int D z \tanh \beta \tilde{H}(z)\\
+&amp;q=1-\int D z \operatorname{sech}^2 \beta \tilde{H}(z)=\int D z
+\tanh ^2 \beta \tilde{H}(z)
+\end{aligned}
+\end{equation}
+\]</span></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Replica/" rel="tag"># Replica</a>
+              <a href="/tags/Spin-Glass/" rel="tag"># Spin Glass</a>
+              <a href="/tags/S-K-model/" rel="tag"># S-K model</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/06/17/replica-of-perceptron/" rel="prev" title="Note | 感知机的复本对称计算">
+                  <i class="fa fa-chevron-left"></i> Note | 感知机的复本对称计算
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Li Yuhao</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
