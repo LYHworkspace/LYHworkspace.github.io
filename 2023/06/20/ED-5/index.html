@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="https://fonts.lug.ustc.edu.cn/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="[object Object]">
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC|Roboto&display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.17.0","exturl":false,"sidebar":{"position":"right","display":"hide","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Abstract 本篇主要内容为狭义相对论和四维形式电动力学。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ED-5 | 四维形式电动力学">
+<meta property="og:url" content="http://example.com/2023/06/20/ED-5/index.html">
+<meta property="og:site_name" content="Li Yuhao&#39;s Blog">
+<meta property="og:description" content="Abstract 本篇主要内容为狭义相对论和四维形式电动力学。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-06-20T15:18:15.000Z">
+<meta property="article:modified_time" content="2023-06-20T15:20:56.398Z">
+<meta property="article:author" content="Li Yuhao">
+<meta property="article:tag" content="Electrodynamics">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2023/06/20/ED-5/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/06/20/ED-5/","path":"2023/06/20/ED-5/","title":"ED-5 | 四维形式电动力学"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ED-5 | 四维形式电动力学 | Li Yuhao's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Li Yuhao's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a></li><li class="menu-item menu-item-essay"><a href="/essay/" rel="section"><i class="fa fa-pencil fa-fw"></i>Essay</a></li><li class="menu-item menu-item-home"><a href="https://www.lyhspace.com/" rel="section" target="_blank"><i class="fa fa-home fa-fw"></i>Home</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%B5%E6%B0%8F%E7%A9%BA%E9%97%B4%E4%B8%8E%E5%9B%9B%E7%BB%B4%E8%AF%AD%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">闵氏空间与四维语言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E7%94%B1%E7%B2%92%E5%AD%90%E7%9A%84%E6%8B%89%E6%B0%8F%E9%87%8F%E4%B8%8E%E8%BF%90%E5%8A%A8%E6%96%B9%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">自由粒子的拉氏量与运动方程</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Li Yuhao"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Li Yuhao</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/06/20/ED-5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Li Yuhao">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Li Yuhao's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="ED-5 | 四维形式电动力学 | Li Yuhao's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ED-5 | 四维形式电动力学
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-06-20 23:18:15 / 修改时间：23:20:56" itemprop="dateCreated datePublished" datetime="2023-06-20T23:18:15+08:00">2023-06-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Physics/" itemprop="url" rel="index"><span itemprop="name">Physics</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Physics/Electrodynamics/" itemprop="url" rel="index"><span itemprop="name">Electrodynamics</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p><strong>Abstract</strong><br />
+本篇主要内容为狭义相对论和四维形式电动力学。</p>
+</blockquote>
+<span id="more"></span>
+<h1 id="闵氏空间与四维语言">闵氏空间与四维语言</h1>
+<h1 id="自由粒子的拉氏量与运动方程">自由粒子的拉氏量与运动方程</h1>
+<p>在闵氏空间中，我们希望力学系统的作用量是一个 Lorentz
+标量。对于自由粒子而言，作用量只能取世界线微元 <span
+class="math inline">\(\mathrm{d}s\)</span> 的积分</p>
+<p><span class="math display">\[
+S = -\alpha \int \mathrm{~d}s
+\]</span></p>
+<p>其中，<span class="math inline">\(\alpha\)</span>
+是待定常数，为了遵循最小原理，前面加一个负号以保证 <span
+class="math inline">\(\alpha\)</span>
+是正数。这是因为欧式空间中的测地线是取极小值，而闵氏空间中的测地线是取极大值。<span
+class="math inline">\(\mathrm{~d}s\)</span> 是闵氏空间中的不变间隔</p>
+<p><span class="math display">\[
+\mathrm{~d}^2s = \mathrm{d}x^\mu\mathrm{d}x_\mu
+\]</span></p>
+<p>接下来确定 <span class="math inline">\(\alpha\)</span> 的值，为了能使
+<span class="math inline">\(c\to\infty\)</span>
+极限下退回到经典的情况，注意到</p>
+<p><span class="math display">\[
+\mathrm{~d}s =
+\sqrt{c^2\mathrm{d}t^2-\boldsymbol{x}^2}=c\sqrt{1-\frac{\boldsymbol{v}^2}{c^2}}
+\mathrm{~d}t
+\]</span></p>
+<p>因此作用量可以改写为</p>
+<p><span class="math display">\[
+S = - \alpha \int \mathrm{~d}s=\int - \alpha
+c\sqrt{1-\frac{\boldsymbol{v}^2}{c^2}} \mathrm{~d}t
+\]</span></p>
+<p>因此我们可以写出“拉氏量”</p>
+<p><span class="math display">\[
+L= - \alpha c\sqrt{1-\frac{\boldsymbol{v}^2}{c^2}} \approx -\alpha c +
+\frac{\alpha \boldsymbol{v}^2}{2c} \xrightarrow{c\to\infty} \frac{1}{2}
+m \boldsymbol{v}^2
+\]</span></p>
+<p>前面的常数项 <span class="math inline">\(-\alpha c\)</span>
+在拉氏量中不重要，因此取 <span class="math inline">\(\alpha =
+m\)</span>。由此我们得到了经典拉氏量的形式</p>
+<p><span class="math display">\[
+L=-mc\sqrt{1-\frac{\boldsymbol{v}^2}{c^2}}=- \frac{m c}{\gamma}
+\]</span></p>
+<p>但是这个形式的拉氏量并不是 Lorentz
+标量，因为在把作用量改为对时间的积分时，已经默认了选择某个惯性系在其中展开，这已经失去了普遍性。所以严格来说，四维时空中并没有经典意义上的拉氏量。</p>
+<blockquote>
+<p><strong>闵氏空间中的拉氏量</strong><br />
+前面提到，在闵氏空间中经典拉氏量 <span class="math inline">\(L\)</span>
+不是一个 Lorentz 不变量。<br />
+在研究单粒子时，可以按如下方式定义相对论性拉氏量 <span
+class="math display">\[
+S = \int \mathbb{L} \mathrm{~d}s
+\]</span> 其中 <span class="math inline">\(\mathbb{L}=-mc\)</span>
+是一个 Lorentz 标量。<br />
+在场论中一般使用拉氏量密度 <span class="math display">\[
+S =\int L \mathrm{~d}t =\int \mathrm{d}^3x~\mathcal{L} \mathrm{~d}t =
+\int \mathcal{L} \mathrm{~d}^4x
+\]</span> 该式中作用量 <span
+class="math inline">\(S\)</span>，四维时空测度 <span
+class="math inline">\(\mathrm{d}^4 x\)</span>，拉氏量密度 <span
+class="math inline">\(\mathcal{L}\)</span> 都是 Lorentz 不变量。</p>
+<p>我们说，四维时空中并没有经典意义上的拉氏量，是指没有一个拉氏量作为
+Lorentz 标量对时间积分后的作用量也是 Lorentz
+标量，这并不意味着经典拉氏量不能用。使用相对论性拉氏量 <span
+class="math inline">\(\mathbb{L}\)</span>
+时，不能直接代入三维形式的欧拉-拉格朗日方程，而是需要使用变分法导出运动方程；如果写出了经典拉氏量
+<span
+class="math inline">\(L\)</span>，可以直接代入三维形式的欧拉-拉格朗日方程得到运动方程。</p>
+</blockquote>
+<p><strong>三维形式推导</strong></p>
+<p>根据经典拉氏量</p>
+<p><span class="math display">\[
+L=-mc\sqrt{1-\frac{\boldsymbol{v}^2}{c^2}}
+\]</span></p>
+<p>可得动量</p>
+<p><span class="math display">\[
+\boldsymbol{p} = \frac{\partial L}{\partial \boldsymbol{v}} =
+\frac{m\boldsymbol{v}}{\sqrt{1-\frac{\boldsymbol{v}^2}{c^2}}} = \gamma m
+\boldsymbol{v}
+\]</span></p>
+<p>哈密顿量</p>
+<p><span class="math display">\[
+H= \boldsymbol{p} \cdot \boldsymbol{v} - L =
+\frac{mc^2}{\sqrt{1-\frac{\boldsymbol{v}^2}{c^2}}} = \gamma mc^2
+\]</span></p>
+<p>代入欧拉-拉格朗日方程</p>
+<p><span class="math display">\[
+\frac{\partial L}{\partial \boldsymbol{x}} -
+\frac{\mathrm{d}}{\mathrm{d}t} \frac{\partial L}{\partial
+\boldsymbol{v}} = 0 \quad \Longrightarrow \quad
+\frac{\mathrm{d}}{\mathrm{d}t} (\gamma \boldsymbol{v}) = 0
+\]</span></p>
+<p><strong>四维形式推导</strong></p>
+<p>对作用量 <span class="math inline">\(S\)</span> 取变分，有</p>
+<p><span class="math display">\[
+\delta S = -mc \int \delta \sqrt{\mathrm{d}x^\mu\mathrm{d}x_\mu} = -mc
+\int \frac{\mathrm{d}x_\mu \delta \mathrm{d}x^\mu}{\mathrm{d}s}
+\]</span></p>
+<p>定义协变四矢量</p>
+<p><span class="math display">\[
+u_\mu= \frac{\mathrm{d}x_\mu }{\mathrm{d}s}
+\]</span></p>
+<p>为粒子的四维速度，则</p>
+<p><span class="math display">\[
+\delta S = -mc \int u_\mu \delta \mathrm{d}x^\mu =  -mc \int u_\mu
+\mathrm{d}(\delta x^\mu) = -mcu_\mu \delta x^\mu + mc \int
+\frac{\mathrm{d}u_\mu}{\mathrm{d}s} \delta x^\mu \mathrm{d}s
+\]</span></p>
+<p>对于端点固定的世界线，上下限处有 <span
+class="math inline">\(\left.\delta x^\mu \right|_{\text{ep}} =
+0\)</span>，由 <span class="math inline">\(\delta S=0\)</span>
+得自由粒子的运动方程</p>
+<p><span class="math display">\[
+\frac{\mathrm{d}u_\mu}{\mathrm{d}s} = 0 \quad \Longleftrightarrow \quad
+\frac{\mathrm{d}^2x_\mu}{\mathrm{d}s^2} = 0
+\]</span></p>
+<p>同时可以定义与 <span class="math inline">\(x^\mu\)</span>
+共轭的四动量</p>
+<p><span class="math display">\[
+p^\mu = mcu^\mu = mc \frac{\mathrm{d}x^\mu}{\mathrm{d}s}=\left(
+\frac{E}{c}, \;\;\boldsymbol{p} \right)
+\]</span></p>
+<blockquote>
+<p>在这个推导过程中，<span class="math inline">\(\mathbb{L}\)</span>
+毫无存在感，这是由于自由粒子比较特殊。以粒子受到一个标量场的作用为例，作用量为
+<span class="math display">\[
+  S = -mc \int e^{\Phi(x)} \mathrm{~d} s
+\]</span> 此时拉氏量 <span class="math inline">\(\mathbb{L} =
+-mce^{\Phi(x)}\)</span> 就会参与到积分中</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Electrodynamics/" rel="tag"># Electrodynamics</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/06/20/Special-Theory-of-Relativity/" rel="prev" title="Electrodynamics | 狭义相对论与四维形式电动力学">
+                  <i class="fa fa-chevron-left"></i> Electrodynamics | 狭义相对论与四维形式电动力学
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Li Yuhao</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
