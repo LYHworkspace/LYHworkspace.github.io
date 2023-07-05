@@ -31,7 +31,7 @@
 <meta property="og:description" content="Abstract Spin Glass 及 S-K model 的介绍。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-07-05T03:23:39.000Z">
-<meta property="article:modified_time" content="2023-07-05T07:07:46.329Z">
+<meta property="article:modified_time" content="2023-07-05T13:21:30.696Z">
 <meta property="article:author" content="Li Yuhao">
 <meta property="article:tag" content="Spin Glass">
 <meta property="article:tag" content="S-K model">
@@ -117,7 +117,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#intro"><span class="nav-number">1.</span> <span class="nav-text">Intro</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E6%97%8B%E7%8E%BB%E7%92%83%E4%B8%8Esk%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">自旋玻璃与SK模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%8D%E6%9C%AC%E6%96%B9%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">复本方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E6%9C%AC%E6%8A%80%E5%B7%A7"><span class="nav-number">3.1.</span> <span class="nav-text">复本技巧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E6%9C%AC%E5%AF%B9%E7%A7%B0%E8%A7%A3"><span class="nav-number">3.2.</span> <span class="nav-text">复本对称解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%8D%E6%9C%AC%E5%AF%B9%E7%A7%B0%E8%A7%A3%E7%9A%84%E7%A8%B3%E5%AE%9A%E6%80%A7%E5%88%86%E6%9E%90"><span class="nav-number">4.</span> <span class="nav-text">复本对称解的稳定性分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%8D%E6%9C%AC%E5%AF%B9%E7%A7%B0%E7%A0%B4%E7%BC%BA"><span class="nav-number">5.</span> <span class="nav-text">复本对称破缺</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A9%BA%E8%85%94%E6%96%B9%E6%B3%95"><span class="nav-number">6.</span> <span class="nav-text">空腔方法</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text">1. Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#spin-glass-and-sk-model"><span class="nav-number">2.</span> <span class="nav-text">2. Spin glass and SK model</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#replica-method"><span class="nav-number">3.</span> <span class="nav-text">3. Replica method</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#replica-trick"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 replica trick</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#replica-symmetry-solution"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 Replica symmetry solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#phase-diagram"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 Phase diagram</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#negative-entropy"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 Negative entropy</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#stability-analysis"><span class="nav-number">4.</span> <span class="nav-text">4. Stability analysis</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#replica-symmetry-breaking"><span class="nav-number">5.</span> <span class="nav-text">5. Replica symmetry breaking</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cavity-method"><span class="nav-number">6.</span> <span class="nav-text">6. Cavity method</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -180,7 +180,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2023-07-05 11:23:39 / 修改时间：15:07:46" itemprop="dateCreated datePublished" datetime="2023-07-05T11:23:39+08:00">2023-07-05</time>
+      <time title="创建时间：2023-07-05 11:23:39 / 修改时间：21:21:30" itemprop="dateCreated datePublished" datetime="2023-07-05T11:23:39+08:00">2023-07-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -210,7 +210,7 @@
 Spin Glass 及 S-K model 的介绍。</p>
 </blockquote>
 <span id="more"></span>
-<h1 id="intro">Intro</h1>
+<h1 id="introduction">1. Introduction</h1>
 <p>二级相变又称为连续相变，是一种十分常见的现象，也是近代凝聚态物理和统计物理研究的重要内容.
 常见的相变有气—液相变、铁磁—顺磁相变、BCS 超导相变等.
 在这些相变过程中，外界条件（如温度）是连续变化的，但是物质的状态却可以发生突然的改变，导致某些物理量发生不连续的变化或者发散.
@@ -251,16 +251,15 @@ Landau 的理论. 但是，使用复本对称理论求解出 S-K
 线），在 dAT 线之下复本对称性破缺<a href="#fn8" class="footnote-ref"
 id="fnref8" role="doc-noteref"><sup>8</sup></a>.
 为了尝试打破复本对称性来描述自旋玻璃的低温相，Thouless、Anderson 与
-Palmer 提出一种平均场方法（TAP 方法），<a href="#fn9"
-class="footnote-ref" id="fnref9"
-role="doc-noteref"><sup>9</sup></a>在自由能中考虑自旋对自身的反弹效应（Onsager
-反应项<sup>[Onsager L. Electric moments of molecules in liquids[J].
-Journal of the American Chemical Society, 1936, 58(8):
-1486-1493.]</sup>[Barker J A, Watts R O. Monte Carlo studies of the
-dielectric properties of water-like models[J]. Molecular Physics, 1973,
-26(3): 789-792.]），并且仅作无序平均. 但是 TAP
-方法也被证明仅在高温下有效<a href="#fn10" class="footnote-ref"
-id="fnref10" role="doc-noteref"><sup>10</sup></a>.</p>
+Palmer 提出一种平均场方法（TAP 方法）<a href="#fn9" class="footnote-ref"
+id="fnref9"
+role="doc-noteref"><sup>9</sup></a>，在自由能中考虑自旋对自身的反弹效应（Onsager
+反应项<a href="#fn10" class="footnote-ref" id="fnref10"
+role="doc-noteref"><sup>10</sup></a> <a href="#fn11"
+class="footnote-ref" id="fnref11"
+role="doc-noteref"><sup>11</sup></a>），并且仅作无序平均. 但是 TAP
+方法也被证明仅在高温下有效<a href="#fn12" class="footnote-ref"
+id="fnref12" role="doc-noteref"><sup>12</sup></a>.</p>
 <p>1979年，G. Parisi 提出了复本对称破缺（replica symmetry breaking,
 RSB）的概念，发展了一套有效的数学方法，并给出了 S-K
 模型的一个精确的理论解.随后，M. Mezard、G. Parisi、M.A. Virasoro 等人对
@@ -272,7 +271,7 @@ breaking）、超度量性（ultrametricity）和非自均性（non-selfaveragen
 提出了一种新的数学方法用于处理 S-K 模型，被称为空腔方法（cavity
 method），后来发现，空腔方法对于统计物理中的一些平均场模型，特别是无序系统，具有广泛的适用性，并且相比复本方法更为简单.</p>
 <p>··· ···</p>
-<h1 id="自旋玻璃与sk模型">自旋玻璃与SK模型</h1>
+<h1 id="spin-glass-and-sk-model">2. Spin glass and SK model</h1>
 <p>铁磁和反铁磁相变是一种常见的相变，一个简单的例子是将一块磁铁加热到一定温度后，磁铁的磁性会消失.
 最经典的铁磁性晶格模型是2维Ising模型，它在一个二维点阵的格点上定义了自旋
 <span class="math inline">\(S_i\in\{\pm
@@ -291,9 +290,9 @@ class="math inline">\(J&lt;0\)</span>，称为反铁磁相互作用，此时格�
 <figure>
 <img
 src="https://github.com/lyhsysu/Picture_bed/assets/106574511/34bee805-8ac4-491e-8021-e851594b8950"
-alt="图1 (a) 2维Ising模型示意图 (b)铁磁相示意图 (c) 顺磁相示意图 图片来自 Giorgio Parisi《随椋鸟飞行：复杂系统的奇境》" />
-<figcaption aria-hidden="true">图1 (a) 2维Ising模型示意图
-(b)铁磁相示意图 (c) 顺磁相示意图 图片来自 Giorgio
+alt="图1  (a) 2维Ising模型示意图  (b)铁磁相示意图  (c) 顺磁相示意图  图片来自 Giorgio Parisi《随椋鸟飞行：复杂系统的奇境》" />
+<figcaption aria-hidden="true">图1  (a) 2维Ising模型示意图
+ (b)铁磁相示意图  (c) 顺磁相示意图  图片来自 Giorgio
 Parisi《随椋鸟飞行：复杂系统的奇境》</figcaption>
 </figure>
 <p>自旋玻璃是考虑点阵中同时存在铁磁相互作用和反铁磁相互作用（如图2(a)所示），即
@@ -320,7 +319,7 @@ class="math display">\[
 \begin{equation}
     H=-\sum_{&lt;i,j&gt;}J_{ij}S_iS_j
 \end{equation}
-\]</span> 其中，<span class="math inline">\(J_{ij}\)</span>服从高斯分布
+\]</span> 其中，<span class="math inline">\(J_{ij}\)</span> 服从高斯分布
 <span class="math inline">\(J_{ij}\sim\mathcal{N}(J_0,J^2)\)</span>.
 随后，D. Sherrington 与 S. Kirkpatrick
 将E-A模型中的最近邻相互作用推广到全连接，提出了自旋玻璃的平均场模型（S-K模型）.
@@ -359,8 +358,8 @@ class="math display">\[
     [F]=-T[\log Z]=-T\int \prod_{(ij)}\mathrm{d}J_{ij}P(J_{ij})\log Z
 \end{equation}
 \]</span></p>
-<h1 id="复本方法">复本方法</h1>
-<h2 id="复本技巧">复本技巧</h2>
+<h1 id="replica-method">3. Replica method</h1>
+<h2 id="replica-trick">3.1 replica trick</h2>
 <p>由于 <span class="math inline">\(\log Z\)</span> 对<span
 class="math inline">\(\boldsymbol{J}\)</span>的依赖关系是十分复杂的，我们无法直接求
 <span class="math inline">\([\log Z]\)</span> .
@@ -380,9 +379,9 @@ j}\right)\mathrm{~~Tr~} \exp \left(\beta \sum_{i&lt;j} J_{i j}
 \sum_{\alpha=1}^n S_i^\alpha\right)
 \end{equation}
 \]</span> 其中，<span class="math inline">\(\alpha\)</span>
-称为复本指标（replica index）. 通过将 <span
-class="math inline">\(P(J_{ij})\)</span> 的表达式代入进行积分得到 <span
-class="math display">\[
+称为复本指标（replica index）. 将 <span
+class="math inline">\(P(J_{ij})\)</span> 的表达式代入上式进行积分得到
+<span class="math display">\[
 \begin{equation}
 \left[Z^n\right]=C \mathrm{~~Tr~} \exp \left\{\frac{1}{N}
 \sum_{i&lt;j}\left(\frac{1}{2} \beta^2 J^2 \sum_{\alpha, \beta}
@@ -413,7 +412,7 @@ m_\alpha^2+N\log\Big(\mathrm{Tr~}\exp \left(L\right)\Big)\right\}
     L:=\beta^2 J^2 \sum_{\alpha&lt;\beta} q_{\alpha \beta} S_i^\alpha
 S_i^\beta+\beta \sum_\alpha\left(J_0 m_\alpha+h\right)  S_i^\alpha
 \end{equation}
-\]</span> 使用鞍点近似法来处理这个积分，得 <span class="math display">\[
+\]</span> 使用鞍点近似处理这个积分，得 <span class="math display">\[
 \begin{equation}
 \left[Z^n\right]=C_4 \exp \left\{\frac{N \beta^2 J^2 n}{4}-\frac{\beta^2
 J^2 N}{2} \sum_{\alpha&lt;\beta}\left(q_{\alpha
@@ -438,7 +437,7 @@ J^2}{4}-\frac{\beta^2 J^2}{2 n} \sum_{\alpha&lt;\beta}\left(q_{\alpha
 \mathrm{Tr~}  \exp (L)\right\}
 \end{equation}
 \]</span></p>
-<h2 id="复本对称解">复本对称解</h2>
+<h2 id="replica-symmetry-solution">3.2 Replica symmetry solution</h2>
 <p>要进一步求解这个问题，就需要考虑参数 <span
 class="math inline">\(q_{\alpha\beta}\)</span>、<span
 class="math inline">\(m_\alpha\)</span>对<span
@@ -446,9 +445,9 @@ class="math inline">\(\alpha\)</span>、<span
 class="math inline">\(\beta\)</span>的依赖关系.
 一个朴素和自然的假设是，各个复本都是等价的，<span
 class="math inline">\(q_{\alpha\beta}\)</span>、<span
-class="math inline">\(m_\alpha\)</span>与<span
+class="math inline">\(m_\alpha\)</span> 与<span
 class="math inline">\(\alpha\)</span>、<span
-class="math inline">\(\beta\)</span>无关，即 <span
+class="math inline">\(\beta\)</span> 无关，即 <span
 class="math inline">\(\forall \alpha, \beta: q_{\alpha \beta}=q,
 m_\alpha=m\)</span>，这就是所谓的复本对称假设.
 根据这个假设，我们可以将式（<span
@@ -464,10 +463,10 @@ S^\beta+\beta\left(J_0 m+h\right) \sum_\alpha S^\alpha\right)\right\}
 \end{aligned}
 \end{equation}
 \]</span> 引入高斯变量 <span class="math inline">\(z\sim
-\mathcal{N}(0,1)\)</span>及高斯测度 <span
-class="math inline">\(Dz\)</span>将<span
-class="math inline">\(\exp\)</span>指数上的宗量线性化，并进行泰勒展开，得
-<span class="math display">\[
+\mathcal{N}(0,1)\)</span> 及高斯测度 <span
+class="math inline">\(Dz\)</span> 将 <span
+class="math inline">\(\exp\)</span>
+指数上的宗量线性化，并进行泰勒展开，得 <span class="math display">\[
 \begin{equation}
 [\log Z]=N\left\{\frac{\beta^2 J^2}{4}\left(1-q^2\right)-\frac{\beta
 J_0}{2} m^2+\int D z~ \log\left[ 2 \cosh
@@ -488,9 +487,77 @@ class="math display">\[
 \end{aligned}
 \end{equation}
 \]</span></p>
-<h1 id="复本对称解的稳定性分析">复本对称解的稳定性分析</h1>
-<h1 id="复本对称破缺">复本对称破缺</h1>
-<h1 id="空腔方法">空腔方法</h1>
+<blockquote>
+<p>复本技巧与复本对称解的详细计算可见 <a
+target="_blank" rel="noopener" href="https://lyhworkspace.github.io/2023/06/18/RS-of-SKmodel/"><em>S-K
+model 的复本对称计算</em></a></p>
+</blockquote>
+<h2 id="phase-diagram">3.3 Phase diagram</h2>
+<h2 id="negative-entropy">3.4 Negative entropy</h2>
+<p>考虑 <span class="math inline">\(h=0,\;j_0=0\)</span> 的情况，此时
+<span class="math inline">\(\hat{H}(z)=J\sqrt{q}z\)</span>。当 <span
+class="math inline">\(T\to 0\)</span> 即 <span
+class="math inline">\(\beta \to \infty\)</span> 时，<span
+class="math inline">\(\beta \hat{H}(z)\to \infty\)</span>，因此 <span
+class="math display">\[
+q=1-\int D z \operatorname{sech}^2 \beta \tilde{H}(z)\to 1
+\]</span> 用参数 <span class="math inline">\(a\)</span> 来线性化 <span
+class="math inline">\(q\)</span>，即 <span
+class="math inline">\(q=1-aT\,(a&gt;0)\)</span>。<span
+class="math inline">\(a\)</span> 的具体形式由下式确定 <span
+class="math display">\[
+aT=\lim _{\beta \rightarrow \infty} \int D z \operatorname{sech}^2 \beta
+\tilde{H}(z)=\frac{1}{\beta J} \int D z\left(\frac{d}{d z} \tanh \beta J
+z\right) =\frac{1}{\beta J} \int D z [2 \delta(z)]=\sqrt{\frac{2}{\pi}}
+\frac{T}{J}
+\]</span></p>
+<p>即 <span class="math inline">\(a=\sqrt{\frac{2}{\pi}}
+/J\)</span>。自由能改写为 <span class="math display">\[
+\begin{equation}
+    \beta [f] = - \frac{[\log Z]}{N} = -\frac{\beta^2 J^2}{4}(1-q)^2 -
+\int D_z\log 2 \cosh (\beta J \sqrt{q} z)
+\end{equation}
+\]</span> 将 <span
+class="math inline">\(q=1-T\sqrt{\frac{2}{\pi}}/J\)</span>
+代入，第一项为 <span class="math display">\[
+\frac{1}{4} \beta^2 J^2(1-q)^2 = \frac{1}{2\pi}
+\]</span> 第二项为 <span class="math display">\[
+\begin{aligned}
+    \int \mathrm{D} z \log 2 \cosh (\beta J \sqrt{q} z) &amp; =2
+\int_0^{\infty} D z \log 2 \frac{\exp (-\beta J \sqrt{q} z)+\exp (\beta
+J \sqrt{q} z)}{2} \\
+&amp; \approx 2 \int_0^{\infty} D z \log 2 \frac{\exp (\beta J \sqrt{q}
+z)}{2} \\
+&amp; = 2 \beta J \sqrt{q} \int_0^{\infty} \frac{1}{\sqrt{2\pi}} z
+e^{-z^2/2} \mathrm{d}z \\
+&amp; = \sqrt{\frac{2}{\pi}} \beta J \sqrt{q}
+\end{aligned}
+\]</span> 将 <span class="math inline">\(\sqrt{q}\)</span> 展开 <span
+class="math display">\[
+\sqrt{q}=\sqrt{1-aT} \approx 1-\frac{1}{2}aT = 1 - \frac{1}{\sqrt{2\pi}}
+\frac{T}{J}
+\]</span> 因此 <span class="math display">\[
+\int \mathrm{D} z \log 2 \cosh (\beta J \sqrt{q} z) =
+\sqrt{\frac{2}{\pi}} \beta J \left( 1 - \frac{1}{\sqrt{2\pi}}
+\frac{T}{J} \right) = \sqrt{\frac{2}{\pi}} \beta J-\frac{1}{\pi}
+\]</span> 可得 <span class="math display">\[
+\begin{equation}
+    \beta [f] = - \frac{1}{2\pi} - \left(  \sqrt{\frac{2}{\pi}} \beta
+J-\frac{1}{\pi} \right) = -\sqrt{\frac{2}{\pi}} \beta J + \frac{1}{2\pi}
+\end{equation}
+\]</span> 最后得出自由能为 <span class="math display">\[
+\begin{equation}
+    \left[ f \right] \approx-\sqrt{\frac{2}{\pi}} J+\frac{T}{2 \pi}
+\end{equation}
+\]</span> 根据 <span class="math inline">\(F=E-TS\)</span>
+可以确定基态能量为 <span class="math inline">\(-\sqrt{2/\pi}
+J\)</span>，基态熵为 <span class="math inline">\(S=-\pi/2\)</span></p>
+<h1 id="stability-analysis">4. Stability analysis</h1>
+<h1 id="replica-symmetry-breaking">5. Replica symmetry breaking</h1>
+<h1 id="cavity-method">6. Cavity method</h1>
+<p> </p>
+<p> </p>
+<p><strong>Reference</strong></p>
 <aside id="footnotes" class="footnotes footnotes-end-of-document"
 role="doc-endnotes">
 <hr />
@@ -525,9 +592,16 @@ class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 of'solvable model of a spin glass'[J]. Philosophical Magazine, 1977,
 35(3): 593-601.<a href="#fnref9" class="footnote-back"
 role="doc-backlink">↩︎</a></p></li>
-<li id="fn10"><p>Mézard M, Parisi G, Virasoro M A. Spin glass theory and
+<li id="fn10"><p>Onsager L. Electric moments of molecules in liquids[J].
+Journal of the American Chemical Society, 1936, 58(8): 1486-1493.<a
+href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>Barker J A, Watts R O. Monte Carlo studies of the
+dielectric properties of water-like models[J]. Molecular Physics, 1973,
+26(3): 789-792.<a href="#fnref11" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p>Mézard M, Parisi G, Virasoro M A. Spin glass theory and
 beyond: An Introduction to the Replica Method and Its Applications[M].
-World Scientific Publishing Company, 1987.<a href="#fnref10"
+World Scientific Publishing Company, 1987.<a href="#fnref12"
 class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </aside>
