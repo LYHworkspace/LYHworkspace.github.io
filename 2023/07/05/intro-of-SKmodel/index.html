@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="https://fonts.lug.ustc.edu.cn/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="[object Object]">
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC|Roboto&display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.17.0","exturl":false,"sidebar":{"position":"right","display":"hide","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Abstract Spin Glass 及 S-K model 的介绍。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Introduction to SK model">
+<meta property="og:url" content="http://example.com/2023/07/05/intro-of-SKmodel/index.html">
+<meta property="og:site_name" content="Li Yuhao&#39;s Blog">
+<meta property="og:description" content="Abstract Spin Glass 及 S-K model 的介绍。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-07-05T03:23:39.000Z">
+<meta property="article:modified_time" content="2023-07-05T03:49:39.339Z">
+<meta property="article:author" content="Li Yuhao">
+<meta property="article:tag" content="Spin Glass">
+<meta property="article:tag" content="S-K model">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2023/07/05/intro-of-SKmodel/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/07/05/intro-of-SKmodel/","path":"2023/07/05/intro-of-SKmodel/","title":"Introduction to SK model"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Introduction to SK model | Li Yuhao's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Li Yuhao's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a></li><li class="menu-item menu-item-essay"><a href="/essay/" rel="section"><i class="fa fa-pencil fa-fw"></i>Essay</a></li><li class="menu-item menu-item-home"><a href="https://www.lyhspace.com/" rel="section" target="_blank"><i class="fa fa-home fa-fw"></i>Home</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#intro"><span class="nav-number">1.</span> <span class="nav-text">Intro</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E6%97%8B%E7%8E%BB%E7%92%83%E4%B8%8Esk%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">自旋玻璃与SK模型</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Li Yuhao"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Li Yuhao</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/05/intro-of-SKmodel/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Li Yuhao">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Li Yuhao's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Introduction to SK model | Li Yuhao's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Introduction to SK model
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-07-05 11:23:39 / 修改时间：11:49:39" itemprop="dateCreated datePublished" datetime="2023-07-05T11:23:39+08:00">2023-07-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Note/SpinGlass/" itemprop="url" rel="index"><span itemprop="name">SpinGlass</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p><strong>Abstract</strong><br />
+Spin Glass 及 S-K model 的介绍。</p>
+</blockquote>
+<span id="more"></span>
+<h1 id="intro">Intro</h1>
+<p>二级相变又称为连续相变，是一种十分常见的现象，也是近代凝聚态物理和统计物理研究的重要内容.
+常见的相变有气—液相变、铁磁—顺磁相变、BCS 超导相变等.
+在这些相变过程中，外界条件（如温度）是连续变化的，但是物质的状态却可以发生突然的改变，导致某些物理量发生不连续的变化或者发散.
+1933年，Landau提出序参量（order parameter）的概念，建立了Landau相变理论.
+根据Landau的理论，二级相变的微观本质是系统的对称性自发破缺，系统的对称性破缺产生了某种“序”，序参量（即描述“序”的参量）就是一个描述系统对称性的变量.
+序参量为零对应着系统的无序状态，非零对应有序状态，在发生二级相变的临界点，序参量连续地从零变为非零.</p>
+<p>玻璃化是另一种常见的相变，比如高温下熔融的二氧化硅液体经过淬火形成石英玻璃，这是一种宏观上有序、微观上分子排列高度无序的物质结构.
+对于一般的铁磁体材料，当温度升高时，原子自身的热运动逐渐超过原子之间的相互作用，物质宏观上变为顺磁性；当温度重新降低至一定水平（称为居里点）后，原子之间的铁磁相互作用使得所有的磁矩都按同一个方向排列（即长程有序状态），物质快速恢复铁磁性.
+但是实验发现，在 AuFe、CuMn
+等一些稀磁合金中，温度下降时，材料的磁化率先缓慢增高，经过一个峰值后再缓慢下降<a
+href="#fn1" class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a> <a href="#fn2" class="footnote-ref"
+id="fnref2" role="doc-noteref"><sup>2</sup></a> <a href="#fn3"
+class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.
+这是因为这类材料中自旋之间的相互作用是完全随机的，温度下降时，复杂的相互作用产生了阻挫效应（frustration
+effect），无法形成长程有序状态，各个磁矩被随机地冻结在某个方向，最后呈现无规则的长程无序状态.
+1970年，P. Anderson 在 B. R. Coles 的建议下提出“自旋玻璃”的概念<a
+href="#fn4" class="footnote-ref" id="fnref4"
+role="doc-noteref"><sup>4</sup></a>，“玻璃”一词是将这种铁磁材料中自旋排列的无序与化学玻璃中分子位置的无序进行类比.</p>
+<p>1975年，S. Edwards 与 P. Anderson
+提出第一个短程相互作用的自旋玻璃模型（E-A
+模型），并提出了复本方法（replica method）和复本对称假设（the assumption
+of replica symmetry）来求解该模型<a href="#fn5" class="footnote-ref"
+id="fnref5" role="doc-noteref"><sup>5</sup></a>.
+这是第一个定性描述自旋玻璃的模型，能够在低温下观察到玻璃相的存在<a
+href="#fn6" class="footnote-ref" id="fnref6"
+role="doc-noteref"><sup>6</sup></a>. 同年，D. Sherrington 与 S.
+Kirkpatrick 提出了自旋玻璃的平均场模型（S-K 模型）<a href="#fn7"
+class="footnote-ref" id="fnref7"
+role="doc-noteref"><sup>7</sup></a>，将短程相互作用推广到全连接的情形.
+根据复本对称理论的计算结果，S-K
+模型中存在一个临界温度，在临界温度以上序参量为零，临界温度以下序参量大于零，这再一次验证了
+Landau 的理论. 但是，使用复本对称理论求解出 S-K
+模型的零温熵为负值，这是不符合物理直观的，因为 S-K
+模型中自旋取向只有两个方向，系统的构型数是可数的，熵不可能为负.
+1978年，de Almeida 和 Thouless 发现 S-K
+模型的复本对称解仅在高温下稳定，在自旋玻璃相中并不稳定，他们找到了复本对称解稳定区间的边界（dAT
+线），在 dAT 线之下复本对称性破缺<a href="#fn8" class="footnote-ref"
+id="fnref8" role="doc-noteref"><sup>8</sup></a>.
+为了尝试打破复本对称性来描述自旋玻璃的低温相，Thouless、Anderson 与
+Palmer 提出一种平均场方法（TAP 方法），<a href="#fn9"
+class="footnote-ref" id="fnref9"
+role="doc-noteref"><sup>9</sup></a>在自由能中考虑自旋对自身的反弹效应（Onsager
+反应项<sup>[Onsager L. Electric moments of molecules in liquids[J].
+Journal of the American Chemical Society, 1936, 58(8):
+1486-1493.]</sup>[Barker J A, Watts R O. Monte Carlo studies of the
+dielectric properties of water-like models[J]. Molecular Physics, 1973,
+26(3): 789-792.]），并且仅作无序平均. 但是 TAP
+方法也被证明仅在高温下有效<a href="#fn10" class="footnote-ref"
+id="fnref10" role="doc-noteref"><sup>10</sup></a>.</p>
+<p>1979年，G. Parisi 提出了复本对称破缺（replica symmetry breaking,
+RSB）的概念，发展了一套有效的数学方法，并给出了 S-K
+模型的一个精确的理论解.随后，M. Mezard、G. Parisi、M.A. Virasoro 等人对
+Parisi
+解的解释工作揭示了玻璃态低温相的复杂性质，其特征是遍历性破坏（ergodicity
+breaking）、超度量性（ultrametricity）和非自均性（non-selfaverageness）.</p>
+<p>··· ···</p>
+<p>1987年，Marc Mézard、Giorgio Parisi 和 Miguel Angel Virasoro
+提出了一种新的数学方法用于处理 S-K 模型，被称为空腔方法（cavity
+method），后来发现，空腔方法对于统计物理中的一些平均场模型，特别是无序系统，具有广泛的适用性，并且相比复本方法更为简单.</p>
+<p>··· ···</p>
+<h1 id="自旋玻璃与sk模型">自旋玻璃与SK模型</h1>
+<p>铁磁和反铁磁相变是一种常见的相变，一个简单的例子是将一块磁铁加热到一定温度后，磁铁的磁性会消失.
+最经典的铁磁性晶格模型是2维Ising模型，它在一个二维点阵的格点上定义了自旋
+<span class="math inline">\(S_i\in\{\pm
+1\}\)</span>，并且定义了最近邻格点之间的相互作用<span
+class="math inline">\(J\)</span>，如图1(a) 所示.
+2维Ising模型的哈密顿量写为 <span class="math display">\[
+\begin{equation}
+    H=-J\sum_{&lt;i,j&gt;}S_iS_j
+\end{equation}
+\]</span> 如果 <span
+class="math inline">\(J&gt;0\)</span>，称为铁磁相互作用，此时，为了使能量最低，格点的自旋倾向于保持平行；若
+<span
+class="math inline">\(J&lt;0\)</span>，称为反铁磁相互作用，此时格点的自旋倾向于保持反平行.
+以铁磁体系为例，铁磁相互作用会使自旋倾向于保持平行，而热扰动打乱自旋的指向.
+在温度不太高时，点阵中大部分自旋的指向相同，体系整体呈现铁磁相（见图1(b)）；而当温度达到一定值后（铁磁体系中为Curie温度，反铁磁体系中为Neel温度），自旋形成随机分布，体系呈现顺磁相（见图1(c)）.</p>
+<figure>
+<img
+src="https://github.com/lyhsysu/Picture_bed/assets/106574511/34bee805-8ac4-491e-8021-e851594b8950"
+alt="图1 (a) 2维Ising模型示意图 (b)铁磁相示意图 (c) 顺磁相示意图 图片来自 Giorgio Parisi《随椋鸟飞行：复杂系统的奇境》" />
+<figcaption aria-hidden="true">图1 (a) 2维Ising模型示意图
+(b)铁磁相示意图 (c) 顺磁相示意图 图片来自 Giorgio
+Parisi《随椋鸟飞行：复杂系统的奇境》</figcaption>
+</figure>
+<p>自旋玻璃是考虑点阵中同时存在铁磁相互作用和反铁磁相互作用（如图2(a)所示），即
+<span class="math inline">\(J\)</span> 对不同的自旋对<span
+class="math inline">\(&lt;i,j&gt;\)</span>不再是一个常数，此时会出现阻挫效应（frustration
+effect）. 以图2(b)
+所示的情况为例，左上角的自旋与右侧的自旋是铁磁相互作用，二者倾向于保持平行，但它与下方的自旋是反铁磁相互作用，二者倾向于保持反平行，因此无论左上角的自旋朝向如何，都无法同时满足使体系（局部）能量最小.
+另一个更简单的阻挫效应的例子如图2(c)
+所示，在一个三角形点阵中，所有连接都是反铁磁相互作用，此时右下角的自旋无论朝向如何都不能满足体系能量最小.</p>
+<figure>
+<img
+src="https://github.com/lyhsysu/Picture_bed/assets/106574511/b00c1333-fb60-40d5-b80d-9b755bef6f5d"
+alt="图1 (a) 自旋玻璃的二维点阵模型，实线表示铁磁相互作用，虚线表示反铁磁相互作用 (b)二维点阵中阻挫效应的示例 (c) 三角形点阵中阻挫效应的示例 图(a)(b)来自 Giorgio Parisi《随椋鸟飞行：复杂系统的奇境》，图(c)来自余荫铠《关于无序系统的一点认识》" />
+<figcaption aria-hidden="true">图1 (a)
+自旋玻璃的二维点阵模型，实线表示铁磁相互作用，虚线表示反铁磁相互作用
+(b)二维点阵中阻挫效应的示例 (c) 三角形点阵中阻挫效应的示例 图(a)(b)来自
+Giorgio
+Parisi《随椋鸟飞行：复杂系统的奇境》，图(c)来自余荫铠《关于无序系统的一点认识》</figcaption>
+</figure>
+<p>1975年，S. Edwards 与 P. Anderson
+提出第一个短程相互作用的自旋玻璃模型（E-A 模型）. E-A 模型与 Ising
+模型类似，只考虑自旋之间的最近邻相互作用，其哈密顿量写为 <span
+class="math display">\[
+\begin{equation}
+    H=-\sum_{&lt;i,j&gt;}J_{ij}S_iS_j
+\end{equation}
+\]</span> 其中，<span class="math inline">\(J_{ij}\)</span>服从高斯分布
+<span class="math inline">\(J_{ij}\sim\mathcal{N}(J_0,J^2)\)</span>.
+随后，D. Sherrington 与 S. Kirkpatrick
+将E-A模型中的最近邻相互作用推广到全连接，提出了自旋玻璃的平均场模型（S-K模型）.
+S-K模型的哈密顿量写为 <span class="math display">\[
+\begin{equation}
+    H=-\sum_{i&lt;j}J_{ij}S_iS_j
+\end{equation}
+\]</span> 如果考虑体系受到外场 <span class="math inline">\(h\)</span>
+的作用，那么哈密顿量写为 <span class="math display">\[
+\begin{equation}
+    H=-\sum_{&lt;i,j&gt;}J_{ij}S_iS_j-h\sum_i S_i
+\end{equation}
+\]</span> 其中，<span class="math inline">\(J_{ij}\)</span> 服从高斯分布
+<span class="math inline">\(J_{ij}\sim
+N\left(\frac{J_0}{N},\frac{J^2}{N}\right)\)</span>.
+注意这里的高斯分布含有归一化因子<span
+class="math inline">\(1/N\)</span>，这是为了保证系统的哈密顿量 <span
+class="math inline">\(\sim\mathcal{O}(N)\)</span>，即是一个广延量.
+利用配分函数 <span class="math inline">\(Z=e^{-\beta E}/\sum e^{-\beta
+E}\)</span> 可以计算自由能： <span class="math display">\[
+\begin{equation}
+    F=-T\log Z=-T\log \mathrm{Tr~}e^{-\beta H}
+\end{equation}
+\]</span> 注意到，<span class="math inline">\(F\)</span> 是 <span
+class="math inline">\(Z\)</span> 的函数，而 <span
+class="math inline">\(Z\)</span> 是 <span
+class="math inline">\(\boldsymbol{J}\equiv\{J_{ij}\}\)</span> 的函数.
+对于一个确定的系统，<span class="math inline">\(\boldsymbol{J}\)</span>
+是从高斯分布中取出来的一个固定的集合（这个过程称为“淬火”，quench）.
+为了获得最终的自由能，我们需要将 <span class="math inline">\(F\)</span>
+对 <span class="math inline">\(\boldsymbol{J}\)</span> 取平均，也即对
+<span class="math inline">\(\log Z\)</span>
+取平均（称为构型平均，configurational average）： <span
+class="math display">\[
+\begin{equation}
+    [F]=-T[\log Z]=-T\int \prod_{(ij)}\mathrm{d}J_{ij}P(J_{ij})\log Z
+\end{equation}
+\]</span></p>
+<aside id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Shih J W. Magnetic properties of gold-iron alloys[J].
+Physical Review, 1931, 38(11): 2051.<a href="#fnref1"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Kondo J. Resistance minimum in dilute magnetic
+alloys[J]. Progress of theoretical physics, 1964, 32(1): 37-49.<a
+href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Cannella V, Mydosh J A. Magnetic ordering in gold-iron
+alloys[J]. Physical Review B, 1972, 6(11): 4220.<a href="#fnref3"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Anderson P W. Localisation theory and the Cu Mn
+problem: Spin glasses[J]. Materials Research Bulletin, 1970, 5(8):
+549-554.<a href="#fnref4" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Edwards S F, Anderson P W. Theory of spin glasses[J].
+Journal of Physics F: Metal Physics, 1975, 5(5): 965.<a href="#fnref5"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Nishimori H. Statistical physics of spin glasses and
+information processing: an introduction[M]. Clarendon Press, 2001.<a
+href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Sherrington D, Kirkpatrick S. Solvable model of a
+spin-glass[J]. Physical review letters, 1975, 35(26): 1792.<a
+href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>de Almeida J R L, Thouless D J. Stability of the
+Sherrington-Kirkpatrick solution of a spin glass model[J]. Journal of
+Physics A: Mathematical and General, 1978, 11(5): 983.<a href="#fnref8"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>Thouless D J, Anderson P W, Palmer R G. Solution
+of'solvable model of a spin glass'[J]. Philosophical Magazine, 1977,
+35(3): 593-601.<a href="#fnref9" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>Mézard M, Parisi G, Virasoro M A. Spin glass theory and
+beyond: An Introduction to the Replica Method and Its Applications[M].
+World Scientific Publishing Company, 1987.<a href="#fnref10"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</aside>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Spin-Glass/" rel="tag"># Spin Glass</a>
+              <a href="/tags/S-K-model/" rel="tag"># S-K model</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/07/05/AMP-of-perceptron/" rel="prev" title="AMP-of-perceptron">
+                  <i class="fa fa-chevron-left"></i> AMP-of-perceptron
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Li Yuhao</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
