@@ -31,7 +31,7 @@
 <meta property="og:description" content="Abstract Spin Glass 及 S-K model 的介绍。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-07-05T03:23:39.000Z">
-<meta property="article:modified_time" content="2023-07-05T13:21:30.696Z">
+<meta property="article:modified_time" content="2023-07-08T05:04:48.105Z">
 <meta property="article:author" content="Li Yuhao">
 <meta property="article:tag" content="Spin Glass">
 <meta property="article:tag" content="S-K model">
@@ -178,9 +178,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2023-07-05 11:23:39 / 修改时间：21:21:30" itemprop="dateCreated datePublished" datetime="2023-07-05T11:23:39+08:00">2023-07-05</time>
+      <time title="创建时间：2023-07-05 11:23:39" itemprop="dateCreated datePublished" datetime="2023-07-05T11:23:39+08:00">2023-07-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-07-08 13:04:48" itemprop="dateModified" datetime="2023-07-08T13:04:48+08:00">2023-07-08</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -493,6 +499,62 @@ target="_blank" rel="noopener" href="https://lyhworkspace.github.io/2023/06/18/R
 model 的复本对称计算</em></a></p>
 </blockquote>
 <h2 id="phase-diagram">3.3 Phase diagram</h2>
+<p>考虑 <span class="math inline">\(h=0\)</span> 的情况，有</p>
+<p><span class="math display">\[
+\begin{equation}
+\begin{aligned}
+&amp;m=\int D z \tanh \left( \beta J\sqrt{q}z+ \beta J_0 m \right) \\
+&amp;q=\int D z \tanh ^2 \beta \left( \beta J\sqrt{q}z+ \beta J_0 m
+\right)
+\end{aligned}
+\end{equation}
+\]</span></p>
+<p>数值求解方程的不动点可以分别得到 <span
+class="math inline">\(q\)</span> 和 <span
+class="math inline">\(m\)</span> 的相图</p>
+<figure>
+<img
+src="https://github.com/lyhsysu/Picture_bed/assets/106574511/a0f175b5-3b34-4d6d-95a0-861765bccf12"
+alt="图3  q 和 m 的相图" />
+<figcaption aria-hidden="true">图3  <span
+class="math inline">\(q\)</span> 和 <span
+class="math inline">\(m\)</span> 的相图</figcaption>
+</figure>
+<p>将他们组合在一起即可得到SK模型复本对称解的相图</p>
+<figure>
+<img
+src="https://user-images.githubusercontent.com/106574511/251933107-fe52a2f1-ae69-4555-8d06-49965a2fe9ce.png"
+alt="图4  SK模型复本对称解的相图" />
+<figcaption aria-hidden="true">图4  SK模型复本对称解的相图</figcaption>
+</figure>
+<p>数值方法的代码为</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% 定义被积函数</span></span><br><span class="line">fq=@(q,m,J,J0,z) <span class="built_in">exp</span>(-z.^<span class="number">2</span>/<span class="number">2</span>).*<span class="built_in">tanh</span>(J.*<span class="built_in">sqrt</span>(q).*z+J0.*m).^<span class="number">2</span>;</span><br><span class="line">fm=@(q,m,J,J0,z) <span class="built_in">exp</span>(-z.^<span class="number">2</span>/<span class="number">2</span>).*<span class="built_in">tanh</span>(J.*<span class="built_in">sqrt</span>(q).*z+J0.*m);</span><br><span class="line"><span class="comment">% 定义q和m的迭代函数</span></span><br><span class="line">gq=@(q,m,J,J0) integral(@(z) fq(q,m,J,J0,z),-<span class="built_in">inf</span>,<span class="built_in">inf</span>)/<span class="built_in">sqrt</span>(<span class="number">2</span>*<span class="built_in">pi</span>);</span><br><span class="line">gm=@(q,m,J,J0) integral(@(z) fm(q,m,J,J0,z),-<span class="built_in">inf</span>,<span class="built_in">inf</span>)/<span class="built_in">sqrt</span>(<span class="number">2</span>*<span class="built_in">pi</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">% 定义存储结果的矩阵</span></span><br><span class="line">Rq=<span class="built_in">zeros</span>(<span class="number">200</span>,<span class="number">200</span>);</span><br><span class="line">Rm=<span class="built_in">zeros</span>(<span class="number">200</span>,<span class="number">200</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">% 进行不动点迭代</span></span><br><span class="line"><span class="keyword">for</span> x = <span class="number">1</span>:<span class="number">200</span></span><br><span class="line">    <span class="keyword">for</span> y = <span class="number">1</span>:<span class="number">200</span></span><br><span class="line">        J=<span class="number">100</span>/y;J0=x/y;</span><br><span class="line">        q=<span class="number">1</span>;m=<span class="number">1</span>;<span class="built_in">i</span>=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> <span class="built_in">abs</span>(q-gq(q,m,J,J0)) &gt; <span class="number">1e-4</span> || <span class="built_in">abs</span>(m-gm(q,m,J,J0)) &gt; <span class="number">1e-4</span></span><br><span class="line">            q=gq(q,m,J,J0);</span><br><span class="line">            m=gm(q,m,J,J0);</span><br><span class="line">            <span class="comment">% 设置最大迭代次数</span></span><br><span class="line">            <span class="built_in">i</span>=<span class="built_in">i</span>+<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">i</span>&gt;<span class="number">100</span></span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        Rq(x,y)=q;</span><br><span class="line">        Rm(x,y)=m;</span><br><span class="line">        <span class="comment">% 显示进度信息</span></span><br><span class="line">        text=<span class="string">&#x27;x=%.2f, y=%.2f | J=%.2f, J0=%.2f | i=%d | q=%.2f, m=%.2f \n&#x27;</span>;</span><br><span class="line">        fprintf(text,x,y,J,J0,<span class="built_in">i</span>,q,m)</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% 绘图</span></span><br><span class="line">imagesc(Rq);view(<span class="number">-90</span>,<span class="number">90</span>);colorbar;</span><br><span class="line">imagesc(Rm);view(<span class="number">-90</span>,<span class="number">90</span>);colorbar;</span><br></pre></td></tr></table></figure>
+<p>除了自旋玻璃相与铁磁相的分界线外，另外两条分界线可以通过微扰的方法进行分析。</p>
+<p><span class="math inline">\(J_0=0\)</span> 时，自由能为 <span
+class="math display">\[
+\begin{equation}
+    \beta [f] = - \frac{[\log Z]}{N} = -\frac{\beta^2 J^2}{4}(1-q)^2 -
+\int Dz\log 2 \cosh (\beta J \sqrt{q} z)
+\end{equation}
+\]</span> 对 <span class="math inline">\(q\)</span> 做小量展开，有 <span
+class="math display">\[
+\begin{equation}
+\begin{aligned}
+    \beta [f] &amp;= -\frac{\beta^2 J^2}{4}(1-q)^2 - \int Dz\log 2 \cosh
+(\beta J \sqrt{q} z) \\
+    &amp;=-\frac{\beta^2 J^2}{4}(1-q)^2 - \int Dz\log 2 \left( 1 +
+\frac{1}{2}(\beta J \sqrt{q} z)^2 + \frac{1}{4!} (\beta J \sqrt{q} z)^4
++ \mathcal{O}\left(q^3\right)\right) \\
+    &amp;=-\frac{\beta^2 J^2}{4}(1-q)^2 - \log 2 - \frac{1}{2}\beta^2
+J^2q \int Dz z^2 - \frac{1}{4!}\beta^4 J^4q^2 \int Dz z^4  \\
+    &amp;=-\frac{1}{4}\beta^2 J^2 + \frac{1}{2}\beta^2 J^2q -
+\frac{1}{4}\beta^2 J^2q^2 - \log 2 - \frac{1}{2}\beta^2 J^2q -
+\frac{3!}{4!} \beta^4 J^4q^2 + \mathcal{O}\left(q^3\right)\\
+    &amp;=-\frac{1}{4} \beta^2 J^2-\log 2-\frac{1}{4}\beta^2
+J^2\left(1-\beta^2 J^2\right) q^2+\mathcal{O}\left(q^3\right)
+\end{aligned}
+\end{equation}
+\]</span></p>
 <h2 id="negative-entropy">3.4 Negative entropy</h2>
 <p>考虑 <span class="math inline">\(h=0,\;j_0=0\)</span> 的情况，此时
 <span class="math inline">\(\hat{H}(z)=J\sqrt{q}z\)</span>。当 <span
@@ -511,11 +573,17 @@ aT=\lim _{\beta \rightarrow \infty} \int D z \operatorname{sech}^2 \beta
 z\right) =\frac{1}{\beta J} \int D z [2 \delta(z)]=\sqrt{\frac{2}{\pi}}
 \frac{T}{J}
 \]</span></p>
+<blockquote>
+<p>这里似乎用了 <span class="math display">\[
+\frac{\mathrm{d}}{\mathrm{d}x} \tanh(\beta x) \xrightarrow{\beta
+\to\infty} 2 \delta(x)
+\]</span></p>
+</blockquote>
 <p>即 <span class="math inline">\(a=\sqrt{\frac{2}{\pi}}
-/J\)</span>。自由能改写为 <span class="math display">\[
+/J\)</span>。自由能仍采用 <span class="math display">\[
 \begin{equation}
     \beta [f] = - \frac{[\log Z]}{N} = -\frac{\beta^2 J^2}{4}(1-q)^2 -
-\int D_z\log 2 \cosh (\beta J \sqrt{q} z)
+\int Dz\log 2 \cosh (\beta J \sqrt{q} z)
 \end{equation}
 \]</span> 将 <span
 class="math inline">\(q=1-T\sqrt{\frac{2}{\pi}}/J\)</span>
@@ -545,7 +613,7 @@ class="math display">\[
     \beta [f] = - \frac{1}{2\pi} - \left(  \sqrt{\frac{2}{\pi}} \beta
 J-\frac{1}{\pi} \right) = -\sqrt{\frac{2}{\pi}} \beta J + \frac{1}{2\pi}
 \end{equation}
-\]</span> 最后得出自由能为 <span class="math display">\[
+\]</span> 即 <span class="math display">\[
 \begin{equation}
     \left[ f \right] \approx-\sqrt{\frac{2}{\pi}} J+\frac{T}{2 \pi}
 \end{equation}
