@@ -23,29 +23,29 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.17.0","exturl":false,"sidebar":{"position":"right","display":"hide","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="Abstract Spin Glass 及 S-K model 的介绍。">
+    <meta name="description" content="Abstract 主要参考了 Nishimori 的 Statistical Physics of Spin Glasses and Information Processing An Introduction 第二章以及 Haozhe Shan 的笔记 Replica calculations for the SK model.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Introduction to SK model">
-<meta property="og:url" content="http://example.com/2023/07/05/intro-of-SKmodel/index.html">
+<meta property="og:title" content="SK model 1 | Introduction">
+<meta property="og:url" content="http://example.com/2023/07/12/SKmodel-1/index.html">
 <meta property="og:site_name" content="Li Yuhao&#39;s Blog">
-<meta property="og:description" content="Abstract Spin Glass 及 S-K model 的介绍。">
+<meta property="og:description" content="Abstract 主要参考了 Nishimori 的 Statistical Physics of Spin Glasses and Information Processing An Introduction 第二章以及 Haozhe Shan 的笔记 Replica calculations for the SK model.">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-07-05T03:23:39.000Z">
-<meta property="article:modified_time" content="2023-07-08T05:04:48.105Z">
+<meta property="article:published_time" content="2023-07-12T13:18:38.000Z">
+<meta property="article:modified_time" content="2023-07-12T13:27:30.714Z">
 <meta property="article:author" content="Li Yuhao">
 <meta property="article:tag" content="Spin Glass">
 <meta property="article:tag" content="S-K model">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/2023/07/05/intro-of-SKmodel/">
+<link rel="canonical" href="http://example.com/2023/07/12/SKmodel-1/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/07/05/intro-of-SKmodel/","path":"2023/07/05/intro-of-SKmodel/","title":"Introduction to SK model"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/07/12/SKmodel-1/","path":"2023/07/12/SKmodel-1/","title":"SK model 1 | Introduction"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Introduction to SK model | Li Yuhao's Blog</title>
+<title>SK model 1 | Introduction | Li Yuhao's Blog</title>
   
 
 
@@ -117,7 +117,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text">1. Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#spin-glass-and-sk-model"><span class="nav-number">2.</span> <span class="nav-text">2. Spin glass and SK model</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#replica-method"><span class="nav-number">3.</span> <span class="nav-text">3. Replica method</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#replica-trick"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 replica trick</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#replica-symmetry-solution"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 Replica symmetry solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#phase-diagram"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 Phase diagram</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#negative-entropy"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 Negative entropy</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#stability-analysis"><span class="nav-number">4.</span> <span class="nav-text">4. Stability analysis</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#replica-symmetry-breaking"><span class="nav-number">5.</span> <span class="nav-text">5. Replica symmetry breaking</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cavity-method"><span class="nav-number">6.</span> <span class="nav-text">6. Cavity method</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text">1. Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#spin-glass-and-sk-model"><span class="nav-number">2.</span> <span class="nav-text">2. Spin glass and SK model</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -150,7 +150,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/05/intro-of-SKmodel/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/12/SKmodel-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -163,12 +163,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Introduction to SK model | Li Yuhao's Blog">
+      <meta itemprop="name" content="SK model 1 | Introduction | Li Yuhao's Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Introduction to SK model
+          SK model 1 | Introduction
         </h1>
 
         <div class="post-meta-container">
@@ -178,15 +178,9 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
+      
 
-      <time title="创建时间：2023-07-05 11:23:39" itemprop="dateCreated datePublished" datetime="2023-07-05T11:23:39+08:00">2023-07-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-07-08 13:04:48" itemprop="dateModified" datetime="2023-07-08T13:04:48+08:00">2023-07-08</time>
+      <time title="创建时间：2023-07-12 21:18:38 / 修改时间：21:27:30" itemprop="dateCreated datePublished" datetime="2023-07-12T21:18:38+08:00">2023-07-12</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -213,7 +207,12 @@
     
     <div class="post-body" itemprop="articleBody"><blockquote>
 <p><strong>Abstract</strong><br />
-Spin Glass 及 S-K model 的介绍。</p>
+主要参考了 Nishimori 的 <a
+target="_blank" rel="noopener" href="https://searchworks.stanford.edu/view/4790812"><em>Statistical
+Physics of Spin Glasses and Information Processing An
+Introduction</em></a> 第二章以及 Haozhe Shan 的笔记 <a
+target="_blank" rel="noopener" href="https://hzshan.github.io/replica_method_in_SK_model.pdf"><em>Replica
+calculations for the SK model</em></a>.</p>
 </blockquote>
 <span id="more"></span>
 <h1 id="introduction">1. Introduction</h1>
@@ -223,7 +222,7 @@ Spin Glass 及 S-K model 的介绍。</p>
 1933年，Landau提出序参量（order parameter）的概念，建立了Landau相变理论.
 根据Landau的理论，二级相变的微观本质是系统的对称性自发破缺，系统的对称性破缺产生了某种“序”，序参量（即描述“序”的参量）就是一个描述系统对称性的变量.
 序参量为零对应着系统的无序状态，非零对应有序状态，在发生二级相变的临界点，序参量连续地从零变为非零.</p>
-<p>玻璃化是另一种常见的相变，比如高温下熔融的二氧化硅液体经过淬火形成石英玻璃，这是一种宏观上有序、微观上分子排列高度无序的物质结构.
+<p>玻璃化是另一种常见的相变，比如高温下熔融的二氧化硅液体经过淬火形成石英玻璃，这是一种宏观上无序、微观上短程有序、长程无序的物质结构.
 对于一般的铁磁体材料，当温度升高时，原子自身的热运动逐渐超过原子之间的相互作用，物质宏观上变为顺磁性；当温度重新降低至一定水平（称为居里点）后，原子之间的铁磁相互作用使得所有的磁矩都按同一个方向排列（即长程有序状态），物质快速恢复铁磁性.
 但是实验发现，在 AuFe、CuMn
 等一些稀磁合金中，温度下降时，材料的磁化率先缓慢增高，经过一个峰值后再缓慢下降<a
@@ -235,7 +234,7 @@ class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.
 effect），无法形成长程有序状态，各个磁矩被随机地冻结在某个方向，最后呈现无规则的长程无序状态.
 1970年，P. Anderson 在 B. R. Coles 的建议下提出“自旋玻璃”的概念<a
 href="#fn4" class="footnote-ref" id="fnref4"
-role="doc-noteref"><sup>4</sup></a>，“玻璃”一词是将这种铁磁材料中自旋排列的无序与化学玻璃中分子位置的无序进行类比.</p>
+role="doc-noteref"><sup>4</sup></a>，“玻璃”一词是将这种铁磁材料中自旋的短程有序、长程无序与化学玻璃中分子进行类比.</p>
 <p>1975年，S. Edwards 与 P. Anderson
 提出第一个短程相互作用的自旋玻璃模型（E-A
 模型），并提出了复本方法（replica method）和复本对称假设（the assumption
@@ -364,265 +363,6 @@ class="math display">\[
     [F]=-T[\log Z]=-T\int \prod_{(ij)}\mathrm{d}J_{ij}P(J_{ij})\log Z
 \end{equation}
 \]</span></p>
-<h1 id="replica-method">3. Replica method</h1>
-<h2 id="replica-trick">3.1 replica trick</h2>
-<p>由于 <span class="math inline">\(\log Z\)</span> 对<span
-class="math inline">\(\boldsymbol{J}\)</span>的依赖关系是十分复杂的，我们无法直接求
-<span class="math inline">\([\log Z]\)</span> .
-可以利用如下一个数学技巧（称为复本技巧，replica trick）将对 <span
-class="math inline">\(\log Z\)</span> 的构型平均转移到对 <span
-class="math inline">\(Z^n\)</span> 的构型平均（称为复本平均，replica
-average）. <span class="math display">\[
-\begin{equation}
-[\log Z]=\lim_{n\to 0}\frac{[Z^n]-1}{n}    
-\end{equation}
-\]</span> 利用复本技巧，我们可以写出配分函数的复本平均： <span
-class="math display">\[
-\begin{equation}
-\left[Z^n\right]=\int \prod_{i&lt;j} d J_{i j} P\left(J_{i
-j}\right)\mathrm{~~Tr~} \exp \left(\beta \sum_{i&lt;j} J_{i j}
-\sum_{\alpha=1}^n S_i^\alpha S_j^\alpha+\beta h \sum_{i=1}^N
-\sum_{\alpha=1}^n S_i^\alpha\right)
-\end{equation}
-\]</span> 其中，<span class="math inline">\(\alpha\)</span>
-称为复本指标（replica index）. 将 <span
-class="math inline">\(P(J_{ij})\)</span> 的表达式代入上式进行积分得到
-<span class="math display">\[
-\begin{equation}
-\left[Z^n\right]=C \mathrm{~~Tr~} \exp \left\{\frac{1}{N}
-\sum_{i&lt;j}\left(\frac{1}{2} \beta^2 J^2 \sum_{\alpha, \beta}
-S_i^\alpha S_j^\alpha S_i^\beta S_j^\beta+\beta J_0 \sum_\alpha
-S_i^\alpha S_j^\alpha\right)+\beta h \sum_{i=1}^N \sum_{\alpha=1}^n
-S_i^\alpha\right\}
-\end{equation}
-\]</span> 为了进一步处理（将 <span class="math inline">\(\exp\)</span>
-指数上的宗量线性化，便于后续使用鞍点近似），引入两个参数 <span
-class="math display">\[
-\begin{equation}
-    q_{\alpha\beta}\equiv\frac{1}{N}\sum_{i}S_i^\alpha S_i^\beta,\quad
-m_{\alpha}\equiv\frac{1}{N}\sum_{i}S_i^\alpha
-\end{equation}
-\]</span> 则有 <span class="math display">\[
-\begin{equation}
-\begin{aligned}
-\left[Z^n\right] =&amp;C&#39; \exp \left(\frac{N \beta^2 J^2
-n}{4}\right) \int_{-\infty}^{\infty} \prod_{\alpha&lt;\beta} d q_{\alpha
-\beta} \prod_\alpha d m_\alpha \\
-&amp; \exp \left\{-\frac{\beta^2 J^2 N}{2} \sum_{\alpha&lt;\beta}
-q_{\alpha \beta}^2-\frac{\beta J_0 N}{2} \sum_\alpha
-m_\alpha^2+N\log\Big(\mathrm{Tr~}\exp \left(L\right)\Big)\right\}
-\end{aligned}
-\end{equation}
-\]</span> 其中， <span class="math display">\[
-\begin{equation}
-    L:=\beta^2 J^2 \sum_{\alpha&lt;\beta} q_{\alpha \beta} S_i^\alpha
-S_i^\beta+\beta \sum_\alpha\left(J_0 m_\alpha+h\right)  S_i^\alpha
-\end{equation}
-\]</span> 使用鞍点近似处理这个积分，得 <span class="math display">\[
-\begin{equation}
-\left[Z^n\right]=C_4 \exp \left\{\frac{N \beta^2 J^2 n}{4}-\frac{\beta^2
-J^2 N}{2} \sum_{\alpha&lt;\beta}\left(q_{\alpha
-\beta}^{\star}\right)^2-\frac{\beta J_0 N}{2}
-\sum_\alpha\left(m_\alpha^{\star}\right)^2+N \log \mathrm{Tr~} \exp
-(L)\right\}
-\end{equation}
-\]</span> 其中， <span class="math display">\[
-\begin{equation}
-q_{\alpha \beta}^{\star}=\frac{\mathrm{Tr~} S^\alpha S^\beta \exp
-(L)}{\mathrm{Tr~}\exp (L)},\quad
-m_\alpha^{\star}=\frac{\mathrm{Tr~}  S^\alpha \exp
-(L)}{\mathrm{Tr~}  \exp (L)}
-\end{equation}
-\]</span> 经过泰勒展开，最终得到<span class="math inline">\(\log
-Z\)</span>的构型平均 <span class="math display">\[
-\begin{equation}
-[\log Z]=N\lim _{n \rightarrow 0}\left\{\frac{\beta^2
-J^2}{4}-\frac{\beta^2 J^2}{2 n} \sum_{\alpha&lt;\beta}\left(q_{\alpha
-\beta}^{\star}\right)^2-\frac{\beta J_0}{2 n}
-\sum_\alpha\left(m_\alpha^{\star}\right)^2+\frac{1}{n} \log
-\mathrm{Tr~}  \exp (L)\right\}
-\end{equation}
-\]</span></p>
-<h2 id="replica-symmetry-solution">3.2 Replica symmetry solution</h2>
-<p>要进一步求解这个问题，就需要考虑参数 <span
-class="math inline">\(q_{\alpha\beta}\)</span>、<span
-class="math inline">\(m_\alpha\)</span>对<span
-class="math inline">\(\alpha\)</span>、<span
-class="math inline">\(\beta\)</span>的依赖关系.
-一个朴素和自然的假设是，各个复本都是等价的，<span
-class="math inline">\(q_{\alpha\beta}\)</span>、<span
-class="math inline">\(m_\alpha\)</span> 与<span
-class="math inline">\(\alpha\)</span>、<span
-class="math inline">\(\beta\)</span> 无关，即 <span
-class="math inline">\(\forall \alpha, \beta: q_{\alpha \beta}=q,
-m_\alpha=m\)</span>，这就是所谓的复本对称假设.
-根据这个假设，我们可以将式（<span
-class="math inline">\(\ref{eq:副本平均step4}\)</span>）改写为 <span
-class="math display">\[
-\begin{equation}
-\begin{aligned}
-&amp;[\log Z] \\
-&amp;=N\left\{\frac{\beta^2 J^2}{4}\left(1+q^2\right)-\frac{\beta
-J_0}{2} m^2+\lim _{n \rightarrow 0} \frac{1}{n} \log \mathrm{Tr~} \exp
-\left(\beta^2 J^2 q \sum_{\alpha&lt;\beta} S^\alpha
-S^\beta+\beta\left(J_0 m+h\right) \sum_\alpha S^\alpha\right)\right\}
-\end{aligned}
-\end{equation}
-\]</span> 引入高斯变量 <span class="math inline">\(z\sim
-\mathcal{N}(0,1)\)</span> 及高斯测度 <span
-class="math inline">\(Dz\)</span> 将 <span
-class="math inline">\(\exp\)</span>
-指数上的宗量线性化，并进行泰勒展开，得 <span class="math display">\[
-\begin{equation}
-[\log Z]=N\left\{\frac{\beta^2 J^2}{4}\left(1-q^2\right)-\frac{\beta
-J_0}{2} m^2+\int D z~ \log\left[ 2 \cosh
-\Big(\beta\hat{H}(z)\Big)\right]\right\}
-\end{equation}
-\]</span> 其中， <span class="math display">\[
-\begin{equation}
-    \hat{H}(z):=J\sqrt{q}z+\left(J_0 m+h\right)
-\end{equation}
-\]</span> 令 <span class="math inline">\(\frac{\partial}{\partial
-m}[\log Z]=0,\;\frac{\partial}{\partial q}[\log Z]= 0\)</span>，得 <span
-class="math display">\[
-\begin{equation}
-\begin{aligned}
-&amp;m=\int D z \tanh \beta \tilde{H}(z)\\
-&amp;q=1-\int D z \operatorname{sech}^2 \beta \tilde{H}(z)=\int D z
-\tanh ^2 \beta \tilde{H}(z)
-\end{aligned}
-\end{equation}
-\]</span></p>
-<blockquote>
-<p>复本技巧与复本对称解的详细计算可见 <a
-target="_blank" rel="noopener" href="https://lyhworkspace.github.io/2023/06/18/RS-of-SKmodel/"><em>S-K
-model 的复本对称计算</em></a></p>
-</blockquote>
-<h2 id="phase-diagram">3.3 Phase diagram</h2>
-<p>考虑 <span class="math inline">\(h=0\)</span> 的情况，有</p>
-<p><span class="math display">\[
-\begin{equation}
-\begin{aligned}
-&amp;m=\int D z \tanh \left( \beta J\sqrt{q}z+ \beta J_0 m \right) \\
-&amp;q=\int D z \tanh ^2 \beta \left( \beta J\sqrt{q}z+ \beta J_0 m
-\right)
-\end{aligned}
-\end{equation}
-\]</span></p>
-<p>数值求解方程的不动点可以分别得到 <span
-class="math inline">\(q\)</span> 和 <span
-class="math inline">\(m\)</span> 的相图</p>
-<figure>
-<img
-src="https://github.com/lyhsysu/Picture_bed/assets/106574511/a0f175b5-3b34-4d6d-95a0-861765bccf12"
-alt="图3  q 和 m 的相图" />
-<figcaption aria-hidden="true">图3  <span
-class="math inline">\(q\)</span> 和 <span
-class="math inline">\(m\)</span> 的相图</figcaption>
-</figure>
-<p>将他们组合在一起即可得到SK模型复本对称解的相图</p>
-<figure>
-<img
-src="https://user-images.githubusercontent.com/106574511/251933107-fe52a2f1-ae69-4555-8d06-49965a2fe9ce.png"
-alt="图4  SK模型复本对称解的相图" />
-<figcaption aria-hidden="true">图4  SK模型复本对称解的相图</figcaption>
-</figure>
-<p>数值方法的代码为</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% 定义被积函数</span></span><br><span class="line">fq=@(q,m,J,J0,z) <span class="built_in">exp</span>(-z.^<span class="number">2</span>/<span class="number">2</span>).*<span class="built_in">tanh</span>(J.*<span class="built_in">sqrt</span>(q).*z+J0.*m).^<span class="number">2</span>;</span><br><span class="line">fm=@(q,m,J,J0,z) <span class="built_in">exp</span>(-z.^<span class="number">2</span>/<span class="number">2</span>).*<span class="built_in">tanh</span>(J.*<span class="built_in">sqrt</span>(q).*z+J0.*m);</span><br><span class="line"><span class="comment">% 定义q和m的迭代函数</span></span><br><span class="line">gq=@(q,m,J,J0) integral(@(z) fq(q,m,J,J0,z),-<span class="built_in">inf</span>,<span class="built_in">inf</span>)/<span class="built_in">sqrt</span>(<span class="number">2</span>*<span class="built_in">pi</span>);</span><br><span class="line">gm=@(q,m,J,J0) integral(@(z) fm(q,m,J,J0,z),-<span class="built_in">inf</span>,<span class="built_in">inf</span>)/<span class="built_in">sqrt</span>(<span class="number">2</span>*<span class="built_in">pi</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">% 定义存储结果的矩阵</span></span><br><span class="line">Rq=<span class="built_in">zeros</span>(<span class="number">200</span>,<span class="number">200</span>);</span><br><span class="line">Rm=<span class="built_in">zeros</span>(<span class="number">200</span>,<span class="number">200</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">% 进行不动点迭代</span></span><br><span class="line"><span class="keyword">for</span> x = <span class="number">1</span>:<span class="number">200</span></span><br><span class="line">    <span class="keyword">for</span> y = <span class="number">1</span>:<span class="number">200</span></span><br><span class="line">        J=<span class="number">100</span>/y;J0=x/y;</span><br><span class="line">        q=<span class="number">1</span>;m=<span class="number">1</span>;<span class="built_in">i</span>=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> <span class="built_in">abs</span>(q-gq(q,m,J,J0)) &gt; <span class="number">1e-4</span> || <span class="built_in">abs</span>(m-gm(q,m,J,J0)) &gt; <span class="number">1e-4</span></span><br><span class="line">            q=gq(q,m,J,J0);</span><br><span class="line">            m=gm(q,m,J,J0);</span><br><span class="line">            <span class="comment">% 设置最大迭代次数</span></span><br><span class="line">            <span class="built_in">i</span>=<span class="built_in">i</span>+<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">i</span>&gt;<span class="number">100</span></span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        Rq(x,y)=q;</span><br><span class="line">        Rm(x,y)=m;</span><br><span class="line">        <span class="comment">% 显示进度信息</span></span><br><span class="line">        text=<span class="string">&#x27;x=%.2f, y=%.2f | J=%.2f, J0=%.2f | i=%d | q=%.2f, m=%.2f \n&#x27;</span>;</span><br><span class="line">        fprintf(text,x,y,J,J0,<span class="built_in">i</span>,q,m)</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% 绘图</span></span><br><span class="line">imagesc(Rq);view(<span class="number">-90</span>,<span class="number">90</span>);colorbar;</span><br><span class="line">imagesc(Rm);view(<span class="number">-90</span>,<span class="number">90</span>);colorbar;</span><br></pre></td></tr></table></figure>
-<p>除了自旋玻璃相与铁磁相的分界线外，另外两条分界线可以通过微扰的方法进行分析。</p>
-<p><span class="math inline">\(J_0=0\)</span> 时，自由能为 <span
-class="math display">\[
-\begin{equation}
-    \beta [f] = - \frac{[\log Z]}{N} = -\frac{\beta^2 J^2}{4}(1-q)^2 -
-\int Dz\log 2 \cosh (\beta J \sqrt{q} z)
-\end{equation}
-\]</span> 对 <span class="math inline">\(q\)</span> 做小量展开，有 <span
-class="math display">\[
-\begin{equation}
-\begin{aligned}
-    \beta [f] &amp;= -\frac{\beta^2 J^2}{4}(1-q)^2 - \int Dz\log 2 \cosh
-(\beta J \sqrt{q} z) \\
-    &amp;=-\frac{\beta^2 J^2}{4}(1-q)^2 - \int Dz\log 2 \left( 1 +
-\frac{1}{2}(\beta J \sqrt{q} z)^2 + \frac{1}{4!} (\beta J \sqrt{q} z)^4
-+ \mathcal{O}\left(q^3\right)\right) \\
-    &amp;=-\frac{\beta^2 J^2}{4}(1-q)^2 - \log 2 - \frac{1}{2}\beta^2
-J^2q \int Dz z^2 - \frac{1}{4!}\beta^4 J^4q^2 \int Dz z^4  \\
-    &amp;=-\frac{1}{4}\beta^2 J^2 + \frac{1}{2}\beta^2 J^2q -
-\frac{1}{4}\beta^2 J^2q^2 - \log 2 - \frac{1}{2}\beta^2 J^2q -
-\frac{3!}{4!} \beta^4 J^4q^2 + \mathcal{O}\left(q^3\right)\\
-    &amp;=-\frac{1}{4} \beta^2 J^2-\log 2-\frac{1}{4}\beta^2
-J^2\left(1-\beta^2 J^2\right) q^2+\mathcal{O}\left(q^3\right)
-\end{aligned}
-\end{equation}
-\]</span></p>
-<h2 id="negative-entropy">3.4 Negative entropy</h2>
-<p>考虑 <span class="math inline">\(h=0,\;j_0=0\)</span> 的情况，此时
-<span class="math inline">\(\hat{H}(z)=J\sqrt{q}z\)</span>。当 <span
-class="math inline">\(T\to 0\)</span> 即 <span
-class="math inline">\(\beta \to \infty\)</span> 时，<span
-class="math inline">\(\beta \hat{H}(z)\to \infty\)</span>，因此 <span
-class="math display">\[
-q=1-\int D z \operatorname{sech}^2 \beta \tilde{H}(z)\to 1
-\]</span> 用参数 <span class="math inline">\(a\)</span> 来线性化 <span
-class="math inline">\(q\)</span>，即 <span
-class="math inline">\(q=1-aT\,(a&gt;0)\)</span>。<span
-class="math inline">\(a\)</span> 的具体形式由下式确定 <span
-class="math display">\[
-aT=\lim _{\beta \rightarrow \infty} \int D z \operatorname{sech}^2 \beta
-\tilde{H}(z)=\frac{1}{\beta J} \int D z\left(\frac{d}{d z} \tanh \beta J
-z\right) =\frac{1}{\beta J} \int D z [2 \delta(z)]=\sqrt{\frac{2}{\pi}}
-\frac{T}{J}
-\]</span></p>
-<blockquote>
-<p>这里似乎用了 <span class="math display">\[
-\frac{\mathrm{d}}{\mathrm{d}x} \tanh(\beta x) \xrightarrow{\beta
-\to\infty} 2 \delta(x)
-\]</span></p>
-</blockquote>
-<p>即 <span class="math inline">\(a=\sqrt{\frac{2}{\pi}}
-/J\)</span>。自由能仍采用 <span class="math display">\[
-\begin{equation}
-    \beta [f] = - \frac{[\log Z]}{N} = -\frac{\beta^2 J^2}{4}(1-q)^2 -
-\int Dz\log 2 \cosh (\beta J \sqrt{q} z)
-\end{equation}
-\]</span> 将 <span
-class="math inline">\(q=1-T\sqrt{\frac{2}{\pi}}/J\)</span>
-代入，第一项为 <span class="math display">\[
-\frac{1}{4} \beta^2 J^2(1-q)^2 = \frac{1}{2\pi}
-\]</span> 第二项为 <span class="math display">\[
-\begin{aligned}
-    \int \mathrm{D} z \log 2 \cosh (\beta J \sqrt{q} z) &amp; =2
-\int_0^{\infty} D z \log 2 \frac{\exp (-\beta J \sqrt{q} z)+\exp (\beta
-J \sqrt{q} z)}{2} \\
-&amp; \approx 2 \int_0^{\infty} D z \log 2 \frac{\exp (\beta J \sqrt{q}
-z)}{2} \\
-&amp; = 2 \beta J \sqrt{q} \int_0^{\infty} \frac{1}{\sqrt{2\pi}} z
-e^{-z^2/2} \mathrm{d}z \\
-&amp; = \sqrt{\frac{2}{\pi}} \beta J \sqrt{q}
-\end{aligned}
-\]</span> 将 <span class="math inline">\(\sqrt{q}\)</span> 展开 <span
-class="math display">\[
-\sqrt{q}=\sqrt{1-aT} \approx 1-\frac{1}{2}aT = 1 - \frac{1}{\sqrt{2\pi}}
-\frac{T}{J}
-\]</span> 因此 <span class="math display">\[
-\int \mathrm{D} z \log 2 \cosh (\beta J \sqrt{q} z) =
-\sqrt{\frac{2}{\pi}} \beta J \left( 1 - \frac{1}{\sqrt{2\pi}}
-\frac{T}{J} \right) = \sqrt{\frac{2}{\pi}} \beta J-\frac{1}{\pi}
-\]</span> 可得 <span class="math display">\[
-\begin{equation}
-    \beta [f] = - \frac{1}{2\pi} - \left(  \sqrt{\frac{2}{\pi}} \beta
-J-\frac{1}{\pi} \right) = -\sqrt{\frac{2}{\pi}} \beta J + \frac{1}{2\pi}
-\end{equation}
-\]</span> 即 <span class="math display">\[
-\begin{equation}
-    \left[ f \right] \approx-\sqrt{\frac{2}{\pi}} J+\frac{T}{2 \pi}
-\end{equation}
-\]</span> 根据 <span class="math inline">\(F=E-TS\)</span>
-可以确定基态能量为 <span class="math inline">\(-\sqrt{2/\pi}
-J\)</span>，基态熵为 <span class="math inline">\(S=-\pi/2\)</span></p>
-<h1 id="stability-analysis">4. Stability analysis</h1>
-<h1 id="replica-symmetry-breaking">5. Replica symmetry breaking</h1>
-<h1 id="cavity-method">6. Cavity method</h1>
 <p> </p>
 <p> </p>
 <p><strong>Reference</strong></p>
@@ -690,11 +430,14 @@ class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2023/07/05/AMP-of-perceptron/" rel="prev" title="AMP-of-perceptron">
-                  <i class="fa fa-chevron-left"></i> AMP-of-perceptron
+                <a href="/2023/07/12/SM01/" rel="prev" title="SM-1 | 经典统计系综理论">
+                  <i class="fa fa-chevron-left"></i> SM-1 | 经典统计系综理论
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2023/07/12/SKmodel-2/" rel="next" title="SK model 2 | 复本对称解">
+                  SK model 2 | 复本对称解 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>

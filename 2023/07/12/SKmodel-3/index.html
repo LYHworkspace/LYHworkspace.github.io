@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="https://fonts.lug.ustc.edu.cn/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="[object Object]">
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC|Roboto&display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.17.0","exturl":false,"sidebar":{"position":"right","display":"hide","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Abstract 主要参考了 Nishimori 的 Statistical Physics of Spin Glasses and Information Processing An Introduction 第二章以及 Haozhe Shan 的笔记 Replica calculations for the SK model.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SK model 1 | 复本对称解的稳定性分析">
+<meta property="og:url" content="http://example.com/2023/07/12/SKmodel-3/index.html">
+<meta property="og:site_name" content="Li Yuhao&#39;s Blog">
+<meta property="og:description" content="Abstract 主要参考了 Nishimori 的 Statistical Physics of Spin Glasses and Information Processing An Introduction 第二章以及 Haozhe Shan 的笔记 Replica calculations for the SK model.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-07-12T13:18:57.000Z">
+<meta property="article:modified_time" content="2023-07-12T13:30:15.533Z">
+<meta property="article:author" content="Li Yuhao">
+<meta property="article:tag" content="Spin Glass">
+<meta property="article:tag" content="S-K model">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2023/07/12/SKmodel-3/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/07/12/SKmodel-3/","path":"2023/07/12/SKmodel-3/","title":"SK model 1 | 复本对称解的稳定性分析"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>SK model 1 | 复本对称解的稳定性分析 | Li Yuhao's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Li Yuhao's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a></li><li class="menu-item menu-item-essay"><a href="/essay/" rel="section"><i class="fa fa-pencil fa-fw"></i>Essay</a></li><li class="menu-item menu-item-home"><a href="https://www.lyhspace.com/" rel="section" target="_blank"><i class="fa fa-home fa-fw"></i>Home</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Li Yuhao"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Li Yuhao</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/12/SKmodel-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Li Yuhao">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Li Yuhao's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="SK model 1 | 复本对称解的稳定性分析 | Li Yuhao's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          SK model 1 | 复本对称解的稳定性分析
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-07-12 21:18:57 / 修改时间：21:30:15" itemprop="dateCreated datePublished" datetime="2023-07-12T21:18:57+08:00">2023-07-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Note/SpinGlass/" itemprop="url" rel="index"><span itemprop="name">SpinGlass</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p><strong>Abstract</strong><br />
+主要参考了 Nishimori 的 <a
+target="_blank" rel="noopener" href="https://searchworks.stanford.edu/view/4790812"><em>Statistical
+Physics of Spin Glasses and Information Processing An
+Introduction</em></a> 第二章以及 Haozhe Shan 的笔记 <a
+target="_blank" rel="noopener" href="https://hzshan.github.io/replica_method_in_SK_model.pdf"><em>Replica
+calculations for the SK model</em></a>.</p>
+</blockquote>
+<span id="more"></span>
+<p>考虑 <span class="math inline">\(h=0\)</span> 的情况，并且令 <span
+class="math display">\[
+y^{\alpha \beta} \equiv \beta J q_{\alpha \beta}, \quad x ^\alpha \equiv
+\sqrt{\beta J_0} m_{\alpha}
+\]</span> 自由能写为 <span class="math display">\[
+\begin{aligned}
+[f]=  -\frac{\beta J^2}{4} -&amp; \lim _{n \rightarrow 0} \frac{1}{\beta
+n}\left\{-\sum_{\alpha&lt;\beta} \frac{1}{2}\left(y^{\alpha
+\beta}\right)^2-\sum_\alpha \frac{1}{2}\left(x^\alpha\right)^2\right. \\
+&amp; +\left. \log \operatorname{Tr} \exp \left(\beta J
+\sum_{\alpha&lt;\beta} y^{\alpha \beta} S^\alpha S^\beta+\sqrt{\beta
+J_0} \sum_\alpha x^\alpha S^\alpha\right) \right\}
+\end{aligned}
+\]</span> 为了检查复本对称解的稳定性，考虑将复本对称解加入小偏差 <span
+class="math display">\[
+x^\alpha = x + \epsilon^\alpha,\quad y^{\alpha \beta} = y + \eta^{\alpha
+\beta}
+\]</span> 将上式最后一项展开至二阶有 <span class="math display">\[
+\begin{aligned}
+&amp;\log \operatorname{Tr} \exp \left(\beta J \sum_{\alpha&lt;\beta}
+y^{\alpha \beta} S^\alpha S^\beta+\sqrt{\beta J_0} \sum_\alpha x^\alpha
+S^\alpha\right)\\
+&amp;=\log \operatorname{Tr} \exp \left( L_0 +\beta J
+\sum_{\alpha&lt;\beta} \eta^{\alpha \beta} S^\alpha S^\beta+\sqrt{\beta
+J_0} \sum_\alpha \epsilon^\alpha S^\alpha\right)\\
+&amp;\approx \log \operatorname{Tr} \mathrm{e}^{L_0}+\frac{\beta J_0}{2}
+\sum_{\alpha \beta} \epsilon^\alpha \epsilon^\beta\left\langle S^\alpha
+S^\beta\right\rangle_{L_0}+\frac{\beta^2 J^2}{2} \sum_{\alpha&lt;\beta}
+\sum_{\gamma&lt;\delta} \eta^{\alpha \beta} \eta^{\gamma
+\delta}\left\langle S^\alpha S^\beta S^\gamma
+S^\delta\right\rangle_{L_0} \\
+&amp; -\frac{\beta J_0}{2} \sum_{\alpha \beta} \epsilon^\alpha
+\epsilon^\beta\left\langle S^\alpha\right\rangle_{L_0}\left\langle
+S^\beta\right\rangle_{L_0}-\frac{\beta^2 J^2}{2} \sum_{\alpha&lt;\beta}
+\sum_{\gamma&lt;\delta} \eta^{\alpha \beta} \eta^{\gamma
+\delta}\left\langle S^\alpha S^\beta\right\rangle_{L_0}\left\langle
+S^\gamma S^\delta\right\rangle_{L_0} \\
+&amp; -\beta J \sqrt{\beta J_0} \sum_\delta \sum_{\alpha&lt;\beta}
+\epsilon^\delta \eta^{\alpha \beta}\left\langle
+S^\delta\right\rangle_{L_0}\left\langle S^\alpha
+S^\beta\right\rangle_{L_0} \\
+&amp; +\beta J \sqrt{\beta J_0} \sum_\delta \sum_{\alpha&lt;\beta}
+\epsilon^\delta \eta^{\alpha \beta}\left\langle S^\delta S^\alpha
+S^\beta\right\rangle_{L_0}
+\end{aligned}
+\]</span> 整理二阶项 <span class="math display">\[
+\begin{aligned}
+\Delta &amp;\equiv \frac{1}{2} \sum_{\alpha \beta}\left\{\delta_{\alpha
+\beta}-\beta J_0\left(\left\langle S^\alpha
+S^\beta\right\rangle_{L_0}-\left\langle
+S^\alpha\right\rangle_{L_0}\left\langle
+S^\beta\right\rangle_{L_0}\right)\right\} \epsilon^\alpha
+\epsilon^\beta\\
+&amp;+\beta J \sqrt{\beta J_0} \sum_\delta
+\sum_{\alpha&lt;\beta}\left(\left\langle
+S^\delta\right\rangle_{L_0}\left\langle S^\alpha
+S^\beta\right\rangle_{L_0}-\left\langle S^\alpha S^\beta
+S^\delta\right\rangle_{L_0}\right) \epsilon^\delta \eta^{\alpha \beta}
+\\
+&amp;+\frac{1}{2} \sum_{\alpha&lt;\beta}
+\sum_{\gamma&lt;\delta}\left\{\delta_{(\alpha \beta)(\delta
+\gamma)}-\beta^2 J^2\left(\left\langle S^\alpha S^\beta S^\gamma
+S^\delta\right\rangle_{L_0} -\left\langle S^\alpha
+S^\beta\right\rangle_{L_0}\left\langle S^\gamma
+S^\delta\right\rangle_{L_0}\right)\right\} \eta^{\alpha \beta}
+\eta^{\gamma \delta}
+\end{aligned}
+\]</span> 写出Hessian矩阵，<span class="math inline">\(\epsilon\)</span>
+的二阶项系数有两个不同的值： <span class="math display">\[
+\begin{aligned}
+&amp; G_{\alpha \alpha}=1-\beta J_0\left(1-\left\langle
+S^\alpha\right\rangle^2\right) \equiv A \\
+&amp; G_{\alpha \beta}=-\beta J_0\left(\left\langle S^\alpha
+S^\beta\right\rangle-\left\langle S^\alpha\right\rangle^2\right) \equiv
+B
+\end{aligned}
+\]</span> <span class="math inline">\(\eta\)</span>
+的二阶项系数有三个不同的值： <span class="math display">\[
+\begin{aligned}
+&amp; G_{(\alpha \beta)(\alpha \beta)}=1-\beta^2 J^2\left(1-\left\langle
+S^\alpha S^\beta\right\rangle^2\right) \equiv P \\
+&amp; G_{(\alpha \beta)(\alpha \gamma)}=-\beta^2 J^2\left(\left\langle
+S^\beta S^\gamma\right\rangle-\left\langle S^\alpha
+S^\beta\right\rangle^2\right) \equiv Q \\
+&amp; G_{(\alpha \beta)(\gamma \delta)}=-\beta^2 J^2\left(\left\langle
+S^\alpha S^\beta S^\gamma S^\delta\right\rangle-\left\langle S^\alpha
+S^\beta\right\rangle^2\right) \equiv R
+\end{aligned}
+\]</span> <span class="math inline">\(\epsilon\)</span> 和 <span
+class="math inline">\(\eta\)</span> 两种不同的交叉项： <span
+class="math display">\[
+\begin{aligned}
+&amp; G_{\alpha(\alpha \beta)}=\beta J \sqrt{\beta
+J_0}\left(\left\langle S^\alpha\right\rangle\left\langle S^\alpha
+S^\beta\right\rangle-\left\langle S^\beta\right\rangle\right) \equiv C
+\\
+&amp; G_{\gamma(\alpha \beta)}=\beta J \sqrt{\beta
+J_0}\left(\left\langle S^\gamma\right\rangle\left\langle S^\alpha
+S^\beta\right\rangle-\left\langle S^\alpha S^\beta
+S^\gamma\right\rangle\right) \equiv D
+\end{aligned}
+\]</span> 上面出现的各种期望可以用复本对称解来评估 <span
+class="math display">\[
+\begin{aligned}
+    &amp; \left\langle S^\alpha\right\rangle \equiv m = \int \mathrm{D}
+z \tanh \beta \tilde{H}(z)\\
+    &amp; \left\langle S^\alpha S^\beta\right\rangle \equiv q = \int
+\mathrm{D} z \tanh ^2 \beta \tilde{H}(z) \\
+    &amp; \left\langle S^\alpha S^\beta S^\gamma\right\rangle \equiv t =
+\int \mathrm{D} z \tanh ^3 \beta \tilde{H}(z) \\
+&amp; \left\langle S^\alpha S^\beta S^\gamma S^\delta\right\rangle
+\equiv r = \int \mathrm{D} z \tanh ^4 \beta \tilde{H}(z)
+\end{aligned}
+\]</span></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Spin-Glass/" rel="tag"># Spin Glass</a>
+              <a href="/tags/S-K-model/" rel="tag"># S-K model</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/07/12/SKmodel-2/" rel="prev" title="SK model 2 | 复本对称解">
+                  <i class="fa fa-chevron-left"></i> SK model 2 | 复本对称解
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/07/12/SKmodel-4/" rel="next" title="SKmodel-4">
+                  SKmodel-4 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Li Yuhao</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
